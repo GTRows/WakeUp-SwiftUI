@@ -2,7 +2,7 @@
 //  Persistence.swift
 //  WakeUp
 //
-//  Created by Fatih Acıroğlu on 10.04.2023.
+//  Created by Fatih Acıroğlu
 //
 
 import CoreData

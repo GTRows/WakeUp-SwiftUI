@@ -7,22 +7,135 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6227599C2A131D7F0030F004 /* AlarmListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6227599B2A131D7F0030F004 /* AlarmListViewModel.swift */; };
+		62519EB82A335FA200F14073 /* WorkShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62519EB72A335FA200F14073 /* WorkShopView.swift */; };
+		62519EBA2A336E5700F14073 /* PackageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62519EB92A336E5700F14073 /* PackageModel.swift */; };
+		62519EBD2A3370D100F14073 /* FireBaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62519EBC2A3370D100F14073 /* FireBaseService.swift */; };
+		62519EC22A337F7D00F14073 /* WorkShopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62519EC12A337F7D00F14073 /* WorkShopViewModel.swift */; };
+		62519EC42A33812000F14073 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62519EC32A33812000F14073 /* NotificationView.swift */; };
+		625448252A13052E008A36C6 /* AlarmSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625448242A13052E008A36C6 /* AlarmSettingsViewModel.swift */; };
+		62545F312A0A55A200EF6B71 /* SwipeActions in Frameworks */ = {isa = PBXBuildFile; productRef = 62545F302A0A55A200EF6B71 /* SwipeActions */; };
+		6254C0B429E589FE002D774F /* Test.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6254C0B329E589FE002D774F /* Test.mp3 */; };
+		6254C0B829E58A56002D774F /* NewMorningAlarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6254C0B729E58A56002D774F /* NewMorningAlarm.mp3 */; };
+		6254C0BA29E58A5A002D774F /* TimeToWakeUp.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6254C0B929E58A5A002D774F /* TimeToWakeUp.mp3 */; };
+		6254C0BF29E58C06002D774F /* AlarmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6254C0BE29E58C06002D774F /* AlarmModel.swift */; };
+		6262222C29E58DC500915E6F /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6262222B29E58DC500915E6F /* MapViewModel.swift */; };
+		6276DB912A29068700F2F0F4 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6276DB902A29068700F2F0F4 /* TabBarView.swift */; };
+		6276DB932A29068E00F2F0F4 /* TabButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6276DB922A29068E00F2F0F4 /* TabButtonView.swift */; };
+		6276DB952A29069200F2F0F4 /* CustomCenterStyleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6276DB942A29069200F2F0F4 /* CustomCenterStyleView.swift */; };
+		6276DB972A29069600F2F0F4 /* ControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6276DB962A29069600F2F0F4 /* ControlView.swift */; };
+		6276DB9A2A2906C700F2F0F4 /* AxisTabView in Frameworks */ = {isa = PBXBuildFile; productRef = 6276DB992A2906C700F2F0F4 /* AxisTabView */; };
+		6280D7712A09C9D500424191 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6280D7702A09C9D500424191 /* GoogleService-Info.plist */; };
+		6280D7742A09CAC700424191 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 6280D7732A09CAC700424191 /* FirebaseAuth */; };
+		6280D7762A09CAC700424191 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 6280D7752A09CAC700424191 /* FirebaseDatabase */; };
+		6280D7782A09CAC700424191 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 6280D7772A09CAC700424191 /* FirebaseFirestore */; };
+		6280D77A2A09CAC700424191 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 6280D7792A09CAC700424191 /* FirebaseFunctions */; };
+		6280D77C2A09CAC700424191 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 6280D77B2A09CAC700424191 /* FirebaseStorage */; };
+		6280D7802A09CD5500424191 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6280D77F2A09CD5500424191 /* AuthViewModel.swift */; };
+		629AD9912A33F2C10047CEFA /* AlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AD9902A33F2C10047CEFA /* AlertService.swift */; };
+		629AD9952A34A4060047CEFA /* CreatePackageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AD9942A34A4060047CEFA /* CreatePackageView.swift */; };
+		629AD9972A34A57A0047CEFA /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AD9962A34A57A0047CEFA /* ImagePicker.swift */; };
+		629AD9992A34ABD70047CEFA /* CreatePackageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AD9982A34ABD70047CEFA /* CreatePackageViewModel.swift */; };
+		629AD99C2A34F2B70047CEFA /* UserStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AD99B2A34F2B70047CEFA /* UserStorageService.swift */; };
+		629AD99E2A34F7250047CEFA /* ProfileSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AD99D2A34F7250047CEFA /* ProfileSettingsViewModel.swift */; };
+		629DDDF629E4DEFE00186056 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629DDDF529E4DEFE00186056 /* ProfileView.swift */; };
+		629DDDF829E4DF0D00186056 /* AlarmListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629DDDF729E4DF0D00186056 /* AlarmListView.swift */; };
+		629DDDFA29E4DF5100186056 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629DDDF929E4DF5100186056 /* MapView.swift */; };
+		629DDE1C29E4E15C00186056 /* AudioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629DDE1B29E4E15C00186056 /* AudioViewModel.swift */; };
+		629DDE2029E4E17800186056 /* VolumeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629DDE1F29E4E17800186056 /* VolumeViewModel.swift */; };
+		629DDE2729E5756900186056 /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 629DDE2629E5756900186056 /* Shimmer */; };
+		629DDE2929E5796F00186056 /* AlarmCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629DDE2829E5796F00186056 /* AlarmCellView.swift */; };
+		62A0E2DA2A2E3A9E00891999 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0E2D92A2E3A9E00891999 /* HomeViewModel.swift */; };
+		62A0E2DD2A2E5D7100891999 /* ProfileSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0E2DC2A2E5D7100891999 /* ProfileSettingsView.swift */; };
+		62A0E2E02A2E633300891999 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0E2DF2A2E633300891999 /* LocationManager.swift */; };
+		62A0E2E32A2E69B900891999 /* AlarmMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0E2E22A2E69B900891999 /* AlarmMapView.swift */; };
+		62A0E2E52A2EB6AB00891999 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0E2E42A2EB6AB00891999 /* UserModel.swift */; };
+		62A0E2E72A2EC45E00891999 /* AritclesCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0E2E62A2EC45E00891999 /* AritclesCellView.swift */; };
+		62A0E2E92A2EC48300891999 /* AritclesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0E2E82A2EC48300891999 /* AritclesModel.swift */; };
+		62B7CC132A2C03E10086F476 /* HapticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B7CC122A2C03E10086F476 /* HapticsService.swift */; };
+		62B7CC162A2C06110086F476 /* DateExtensions.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B7CC152A2C06110086F476 /* DateExtensions.swift.swift */; };
+		62B7CC182A2C07250086F476 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B7CC172A2C07250086F476 /* Constants.swift */; };
+		62B7CC1B2A2C11880086F476 /* SleepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B7CC1A2A2C11880086F476 /* SleepView.swift */; };
+		62B7CC1D2A2C12150086F476 /* AlarmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B7CC1C2A2C12150086F476 /* AlarmService.swift */; };
+		62B7CC1F2A2C14880086F476 /* DataBaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B7CC1E2A2C14880086F476 /* DataBaseService.swift */; };
+		62B7CC222A2C20830086F476 /* MusicCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B7CC212A2C20830086F476 /* MusicCellView.swift */; };
+		62B7CC242A2C24930086F476 /* MusicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B7CC232A2C24930086F476 /* MusicModel.swift */; };
+		62B7CC262A2D1F760086F476 /* StringExtenions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B7CC252A2D1F760086F476 /* StringExtenions.swift */; };
+		62B7CC292A2D1F9F0086F476 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B7CC282A2D1F9F0086F476 /* LoginView.swift */; };
+		62B7CC2D2A2D1FC10086F476 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B7CC2C2A2D1FC10086F476 /* SignUpView.swift */; };
+		62B7CC302A2D20E20086F476 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B7CC2F2A2D20E20086F476 /* InitialView.swift */; };
+		62B7CC322A2D21410086F476 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B7CC312A2D21410086F476 /* AuthView.swift */; };
+		62B7CC362A2D2A490086F476 /* SleepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B7CC352A2D2A490086F476 /* SleepViewModel.swift */; };
+		62EF9AD12A3389900057C1CE /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EF9AD02A3389900057C1CE /* NotificationViewModel.swift */; };
 		62F7A59C29E386900005E833 /* WakeUpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F7A59B29E386900005E833 /* WakeUpApp.swift */; };
-		62F7A59E29E386900005E833 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F7A59D29E386900005E833 /* ContentView.swift */; };
 		62F7A5A029E386910005E833 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62F7A59F29E386910005E833 /* Assets.xcassets */; };
-		62F7A5A329E386910005E833 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62F7A5A229E386910005E833 /* Preview Assets.xcassets */; };
 		62F7A5A529E386910005E833 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F7A5A429E386910005E833 /* Persistence.swift */; };
 		62F7A5A829E386910005E833 /* WakeUp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 62F7A5A629E386910005E833 /* WakeUp.xcdatamodeld */; };
+		62F7A5B229E387DF0005E833 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F7A5B129E387DF0005E833 /* HomeView.swift */; };
+		62F7A5B429E387E90005E833 /* AlarmSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F7A5B329E387E90005E833 /* AlarmSettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6227599B2A131D7F0030F004 /* AlarmListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmListViewModel.swift; sourceTree = "<group>"; };
+		62519EB72A335FA200F14073 /* WorkShopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkShopView.swift; sourceTree = "<group>"; };
+		62519EB92A336E5700F14073 /* PackageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageModel.swift; sourceTree = "<group>"; };
+		62519EBC2A3370D100F14073 /* FireBaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseService.swift; sourceTree = "<group>"; };
+		62519EC12A337F7D00F14073 /* WorkShopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkShopViewModel.swift; sourceTree = "<group>"; };
+		62519EC32A33812000F14073 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		625448242A13052E008A36C6 /* AlarmSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlarmSettingsViewModel.swift; path = ../../../AlarmSettingsViewModel.swift; sourceTree = "<group>"; };
+		6254C0B329E589FE002D774F /* Test.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Test.mp3; sourceTree = "<group>"; };
+		6254C0B729E58A56002D774F /* NewMorningAlarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = NewMorningAlarm.mp3; sourceTree = "<group>"; };
+		6254C0B929E58A5A002D774F /* TimeToWakeUp.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = TimeToWakeUp.mp3; sourceTree = "<group>"; };
+		6254C0BE29E58C06002D774F /* AlarmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmModel.swift; sourceTree = "<group>"; };
+		6262222B29E58DC500915E6F /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		6276DB902A29068700F2F0F4 /* TabBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		6276DB922A29068E00F2F0F4 /* TabButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabButtonView.swift; sourceTree = "<group>"; };
+		6276DB942A29069200F2F0F4 /* CustomCenterStyleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCenterStyleView.swift; sourceTree = "<group>"; };
+		6276DB962A29069600F2F0F4 /* ControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlView.swift; sourceTree = "<group>"; };
+		6280D7702A09C9D500424191 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6280D77F2A09CD5500424191 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		629AD9902A33F2C10047CEFA /* AlertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertService.swift; sourceTree = "<group>"; };
+		629AD9942A34A4060047CEFA /* CreatePackageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePackageView.swift; sourceTree = "<group>"; };
+		629AD9962A34A57A0047CEFA /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		629AD9982A34ABD70047CEFA /* CreatePackageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePackageViewModel.swift; sourceTree = "<group>"; };
+		629AD99B2A34F2B70047CEFA /* UserStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorageService.swift; sourceTree = "<group>"; };
+		629AD99D2A34F7250047CEFA /* ProfileSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsViewModel.swift; sourceTree = "<group>"; };
+		629DDDF529E4DEFE00186056 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		629DDDF729E4DF0D00186056 /* AlarmListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmListView.swift; sourceTree = "<group>"; };
+		629DDDF929E4DF5100186056 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		629DDE1B29E4E15C00186056 /* AudioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewModel.swift; sourceTree = "<group>"; };
+		629DDE1F29E4E17800186056 /* VolumeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeViewModel.swift; sourceTree = "<group>"; };
+		629DDE2829E5796F00186056 /* AlarmCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCellView.swift; sourceTree = "<group>"; };
+		62A0E2D92A2E3A9E00891999 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		62A0E2DC2A2E5D7100891999 /* ProfileSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsView.swift; sourceTree = "<group>"; };
+		62A0E2DF2A2E633300891999 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		62A0E2E22A2E69B900891999 /* AlarmMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmMapView.swift; sourceTree = "<group>"; };
+		62A0E2E42A2EB6AB00891999 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		62A0E2E62A2EC45E00891999 /* AritclesCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AritclesCellView.swift; sourceTree = "<group>"; };
+		62A0E2E82A2EC48300891999 /* AritclesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AritclesModel.swift; sourceTree = "<group>"; };
+		62B7CC122A2C03E10086F476 /* HapticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsService.swift; sourceTree = "<group>"; };
+		62B7CC152A2C06110086F476 /* DateExtensions.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift.swift; sourceTree = "<group>"; };
+		62B7CC172A2C07250086F476 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		62B7CC1A2A2C11880086F476 /* SleepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepView.swift; sourceTree = "<group>"; };
+		62B7CC1C2A2C12150086F476 /* AlarmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmService.swift; sourceTree = "<group>"; };
+		62B7CC1E2A2C14880086F476 /* DataBaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseService.swift; sourceTree = "<group>"; };
+		62B7CC212A2C20830086F476 /* MusicCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCellView.swift; sourceTree = "<group>"; };
+		62B7CC232A2C24930086F476 /* MusicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicModel.swift; sourceTree = "<group>"; };
+		62B7CC252A2D1F760086F476 /* StringExtenions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtenions.swift; sourceTree = "<group>"; };
+		62B7CC282A2D1F9F0086F476 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		62B7CC2C2A2D1FC10086F476 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sign\U0010UpView.swift"; sourceTree = "<group>"; };
+		62B7CC2F2A2D20E20086F476 /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
+		62B7CC312A2D21410086F476 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		62B7CC352A2D2A490086F476 /* SleepViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepViewModel.swift; sourceTree = "<group>"; };
+		62B83AF829E3944300763E7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		62EF9AD02A3389900057C1CE /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
 		62F7A59829E386900005E833 /* WakeUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WakeUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62F7A59B29E386900005E833 /* WakeUpApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakeUpApp.swift; sourceTree = "<group>"; };
-		62F7A59D29E386900005E833 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		62F7A59F29E386910005E833 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		62F7A5A229E386910005E833 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		62F7A5A429E386910005E833 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		62F7A5A729E386910005E833 /* WakeUp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WakeUp.xcdatamodel; sourceTree = "<group>"; };
+		62F7A5B129E387DF0005E833 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		62F7A5B329E387E90005E833 /* AlarmSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,12 +143,121 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6280D7762A09CAC700424191 /* FirebaseDatabase in Frameworks */,
+				6280D7782A09CAC700424191 /* FirebaseFirestore in Frameworks */,
+				6276DB9A2A2906C700F2F0F4 /* AxisTabView in Frameworks */,
+				6280D77A2A09CAC700424191 /* FirebaseFunctions in Frameworks */,
+				62545F312A0A55A200EF6B71 /* SwipeActions in Frameworks */,
+				629DDE2729E5756900186056 /* Shimmer in Frameworks */,
+				6280D7742A09CAC700424191 /* FirebaseAuth in Frameworks */,
+				6280D77C2A09CAC700424191 /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6254C0AE29E5893B002D774F /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				6254C0B929E58A5A002D774F /* TimeToWakeUp.mp3 */,
+				6254C0B729E58A56002D774F /* NewMorningAlarm.mp3 */,
+				6254C0B329E589FE002D774F /* Test.mp3 */,
+			);
+			path = Sound;
+			sourceTree = "<group>";
+		};
+		6254C0BB29E58B11002D774F /* App */ = {
+			isa = PBXGroup;
+			children = (
+				62F7A59B29E386900005E833 /* WakeUpApp.swift */,
+				62F7A5A429E386910005E833 /* Persistence.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		6276DB8F2A29066E00F2F0F4 /* TabViewGroup */ = {
+			isa = PBXGroup;
+			children = (
+				6276DB902A29068700F2F0F4 /* TabBarView.swift */,
+				6276DB922A29068E00F2F0F4 /* TabButtonView.swift */,
+				6276DB942A29069200F2F0F4 /* CustomCenterStyleView.swift */,
+				6276DB962A29069600F2F0F4 /* ControlView.swift */,
+			);
+			path = TabViewGroup;
+			sourceTree = "<group>";
+		};
+		62A0E2DB2A2E5D6200891999 /* SettingsView */ = {
+			isa = PBXGroup;
+			children = (
+				629DDDF529E4DEFE00186056 /* ProfileView.swift */,
+				62A0E2DC2A2E5D7100891999 /* ProfileSettingsView.swift */,
+			);
+			path = SettingsView;
+			sourceTree = "<group>";
+		};
+		62A0E2DE2A2E631B00891999 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				62A0E2DF2A2E633300891999 /* LocationManager.swift */,
+				629DDE1F29E4E17800186056 /* VolumeViewModel.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		62A0E2E12A2E69A700891999 /* AlarmMap */ = {
+			isa = PBXGroup;
+			children = (
+				629DDDF929E4DF5100186056 /* MapView.swift */,
+				62A0E2E22A2E69B900891999 /* AlarmMapView.swift */,
+			);
+			path = AlarmMap;
+			sourceTree = "<group>";
+		};
+		62B7CC112A2C03770086F476 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				62B7CC122A2C03E10086F476 /* HapticsService.swift */,
+				629AD99B2A34F2B70047CEFA /* UserStorageService.swift */,
+				62B7CC1C2A2C12150086F476 /* AlarmService.swift */,
+				62B7CC1E2A2C14880086F476 /* DataBaseService.swift */,
+				62519EBC2A3370D100F14073 /* FireBaseService.swift */,
+				629AD9902A33F2C10047CEFA /* AlertService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		62B7CC142A2C05F90086F476 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				62B7CC172A2C07250086F476 /* Constants.swift */,
+				62B7CC152A2C06110086F476 /* DateExtensions.swift.swift */,
+				62B7CC252A2D1F760086F476 /* StringExtenions.swift */,
+				629AD9962A34A57A0047CEFA /* ImagePicker.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		62B7CC202A2C206F0086F476 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				629DDE2829E5796F00186056 /* AlarmCellView.swift */,
+				62B7CC212A2C20830086F476 /* MusicCellView.swift */,
+				62A0E2E62A2EC45E00891999 /* AritclesCellView.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		62B7CC272A2D1F920086F476 /* AuthView */ = {
+			isa = PBXGroup;
+			children = (
+				62B7CC312A2D21410086F476 /* AuthView.swift */,
+				62B7CC282A2D1F9F0086F476 /* LoginView.swift */,
+				62B7CC2C2A2D1FC10086F476 /* SignUpView.swift */,
+			);
+			path = AuthView;
+			sourceTree = "<group>";
+		};
 		62F7A58F29E386900005E833 = {
 			isa = PBXGroup;
 			children = (
@@ -55,22 +277,70 @@
 		62F7A59A29E386900005E833 /* WakeUp */ = {
 			isa = PBXGroup;
 			children = (
-				62F7A59B29E386900005E833 /* WakeUpApp.swift */,
-				62F7A59D29E386900005E833 /* ContentView.swift */,
+				6254C0BB29E58B11002D774F /* App */,
+				62F7A5AE29E387030005E833 /* Model */,
+				62B7CC142A2C05F90086F476 /* Utils */,
+				62B7CC112A2C03770086F476 /* Services */,
+				62A0E2DE2A2E631B00891999 /* Manager */,
+				62F7A5B029E387100005E833 /* ViewModel */,
+				62F7A5AF29E3870A0005E833 /* View */,
+				6254C0AE29E5893B002D774F /* Sound */,
 				62F7A59F29E386910005E833 /* Assets.xcassets */,
-				62F7A5A429E386910005E833 /* Persistence.swift */,
 				62F7A5A629E386910005E833 /* WakeUp.xcdatamodeld */,
-				62F7A5A129E386910005E833 /* Preview Content */,
+				6280D7702A09C9D500424191 /* GoogleService-Info.plist */,
+				62B83AF829E3944300763E7A /* Info.plist */,
 			);
 			path = WakeUp;
 			sourceTree = "<group>";
 		};
-		62F7A5A129E386910005E833 /* Preview Content */ = {
+		62F7A5AE29E387030005E833 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				62F7A5A229E386910005E833 /* Preview Assets.xcassets */,
+				6254C0BE29E58C06002D774F /* AlarmModel.swift */,
+				62B7CC232A2C24930086F476 /* MusicModel.swift */,
+				62A0E2E42A2EB6AB00891999 /* UserModel.swift */,
+				62A0E2E82A2EC48300891999 /* AritclesModel.swift */,
+				62519EB92A336E5700F14073 /* PackageModel.swift */,
 			);
-			path = "Preview Content";
+			path = Model;
+			sourceTree = "<group>";
+		};
+		62F7A5AF29E3870A0005E833 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				62B7CC2F2A2D20E20086F476 /* InitialView.swift */,
+				62B7CC272A2D1F920086F476 /* AuthView */,
+				6276DB8F2A29066E00F2F0F4 /* TabViewGroup */,
+				62A0E2E12A2E69A700891999 /* AlarmMap */,
+				62F7A5B129E387DF0005E833 /* HomeView.swift */,
+				62519EC32A33812000F14073 /* NotificationView.swift */,
+				62519EB72A335FA200F14073 /* WorkShopView.swift */,
+				629DDDF729E4DF0D00186056 /* AlarmListView.swift */,
+				62B7CC1A2A2C11880086F476 /* SleepView.swift */,
+				62F7A5B329E387E90005E833 /* AlarmSettingsView.swift */,
+				62A0E2DB2A2E5D6200891999 /* SettingsView */,
+				62B7CC202A2C206F0086F476 /* Cells */,
+				629AD9942A34A4060047CEFA /* CreatePackageView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		62F7A5B029E387100005E833 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				62A0E2D92A2E3A9E00891999 /* HomeViewModel.swift */,
+				629DDE1B29E4E15C00186056 /* AudioViewModel.swift */,
+				6262222B29E58DC500915E6F /* MapViewModel.swift */,
+				6280D77F2A09CD5500424191 /* AuthViewModel.swift */,
+				625448242A13052E008A36C6 /* AlarmSettingsViewModel.swift */,
+				6227599B2A131D7F0030F004 /* AlarmListViewModel.swift */,
+				62B7CC352A2D2A490086F476 /* SleepViewModel.swift */,
+				62519EC12A337F7D00F14073 /* WorkShopViewModel.swift */,
+				62EF9AD02A3389900057C1CE /* NotificationViewModel.swift */,
+				629AD9982A34ABD70047CEFA /* CreatePackageViewModel.swift */,
+				629AD99D2A34F7250047CEFA /* ProfileSettingsViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -89,6 +359,16 @@
 			dependencies = (
 			);
 			name = WakeUp;
+			packageProductDependencies = (
+				629DDE2629E5756900186056 /* Shimmer */,
+				6280D7732A09CAC700424191 /* FirebaseAuth */,
+				6280D7752A09CAC700424191 /* FirebaseDatabase */,
+				6280D7772A09CAC700424191 /* FirebaseFirestore */,
+				6280D7792A09CAC700424191 /* FirebaseFunctions */,
+				6280D77B2A09CAC700424191 /* FirebaseStorage */,
+				62545F302A0A55A200EF6B71 /* SwipeActions */,
+				6276DB992A2906C700F2F0F4 /* AxisTabView */,
+			);
 			productName = WakeUp;
 			productReference = 62F7A59829E386900005E833 /* WakeUp.app */;
 			productType = "com.apple.product-type.application";
@@ -117,6 +397,12 @@
 				Base,
 			);
 			mainGroup = 62F7A58F29E386900005E833;
+			packageReferences = (
+				629DDE2529E5756900186056 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
+				6280D7722A09CAC700424191 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				62545F2F2A0A55A100EF6B71 /* XCRemoteSwiftPackageReference "SwipeActions" */,
+				6276DB982A2906C700F2F0F4 /* XCRemoteSwiftPackageReference "AxisTabView" */,
+			);
 			productRefGroup = 62F7A59929E386900005E833 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -131,7 +417,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				62F7A5A329E386910005E833 /* Preview Assets.xcassets in Resources */,
+				6254C0B829E58A56002D774F /* NewMorningAlarm.mp3 in Resources */,
+				6254C0BA29E58A5A002D774F /* TimeToWakeUp.mp3 in Resources */,
+				6280D7712A09C9D500424191 /* GoogleService-Info.plist in Resources */,
+				6254C0B429E589FE002D774F /* Test.mp3 in Resources */,
 				62F7A5A029E386910005E833 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -143,10 +432,59 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				629DDE2029E4E17800186056 /* VolumeViewModel.swift in Sources */,
+				62B7CC242A2C24930086F476 /* MusicModel.swift in Sources */,
+				62B7CC362A2D2A490086F476 /* SleepViewModel.swift in Sources */,
+				625448252A13052E008A36C6 /* AlarmSettingsViewModel.swift in Sources */,
 				62F7A5A829E386910005E833 /* WakeUp.xcdatamodeld in Sources */,
+				629AD9992A34ABD70047CEFA /* CreatePackageViewModel.swift in Sources */,
+				62F7A5B229E387DF0005E833 /* HomeView.swift in Sources */,
+				629DDDF829E4DF0D00186056 /* AlarmListView.swift in Sources */,
 				62F7A5A529E386910005E833 /* Persistence.swift in Sources */,
-				62F7A59E29E386900005E833 /* ContentView.swift in Sources */,
+				62B7CC1F2A2C14880086F476 /* DataBaseService.swift in Sources */,
+				62B7CC182A2C07250086F476 /* Constants.swift in Sources */,
+				6227599C2A131D7F0030F004 /* AlarmListViewModel.swift in Sources */,
+				62A0E2E72A2EC45E00891999 /* AritclesCellView.swift in Sources */,
+				6280D7802A09CD5500424191 /* AuthViewModel.swift in Sources */,
 				62F7A59C29E386900005E833 /* WakeUpApp.swift in Sources */,
+				6276DB952A29069200F2F0F4 /* CustomCenterStyleView.swift in Sources */,
+				6276DB912A29068700F2F0F4 /* TabBarView.swift in Sources */,
+				62519EBA2A336E5700F14073 /* PackageModel.swift in Sources */,
+				62EF9AD12A3389900057C1CE /* NotificationViewModel.swift in Sources */,
+				6276DB932A29068E00F2F0F4 /* TabButtonView.swift in Sources */,
+				62B7CC2D2A2D1FC10086F476 /* SignUpView.swift in Sources */,
+				62A0E2E32A2E69B900891999 /* AlarmMapView.swift in Sources */,
+				629DDE2929E5796F00186056 /* AlarmCellView.swift in Sources */,
+				629AD9912A33F2C10047CEFA /* AlertService.swift in Sources */,
+				629AD99C2A34F2B70047CEFA /* UserStorageService.swift in Sources */,
+				62B7CC302A2D20E20086F476 /* InitialView.swift in Sources */,
+				62519EBD2A3370D100F14073 /* FireBaseService.swift in Sources */,
+				62B7CC1B2A2C11880086F476 /* SleepView.swift in Sources */,
+				6254C0BF29E58C06002D774F /* AlarmModel.swift in Sources */,
+				629AD9972A34A57A0047CEFA /* ImagePicker.swift in Sources */,
+				62B7CC322A2D21410086F476 /* AuthView.swift in Sources */,
+				62B7CC292A2D1F9F0086F476 /* LoginView.swift in Sources */,
+				62519EC42A33812000F14073 /* NotificationView.swift in Sources */,
+				62A0E2DA2A2E3A9E00891999 /* HomeViewModel.swift in Sources */,
+				62B7CC1D2A2C12150086F476 /* AlarmService.swift in Sources */,
+				629DDDF629E4DEFE00186056 /* ProfileView.swift in Sources */,
+				6262222C29E58DC500915E6F /* MapViewModel.swift in Sources */,
+				62519EB82A335FA200F14073 /* WorkShopView.swift in Sources */,
+				62B7CC222A2C20830086F476 /* MusicCellView.swift in Sources */,
+				62519EC22A337F7D00F14073 /* WorkShopViewModel.swift in Sources */,
+				629DDE1C29E4E15C00186056 /* AudioViewModel.swift in Sources */,
+				629AD99E2A34F7250047CEFA /* ProfileSettingsViewModel.swift in Sources */,
+				629DDDFA29E4DF5100186056 /* MapView.swift in Sources */,
+				62A0E2E52A2EB6AB00891999 /* UserModel.swift in Sources */,
+				62B7CC162A2C06110086F476 /* DateExtensions.swift.swift in Sources */,
+				62A0E2E92A2EC48300891999 /* AritclesModel.swift in Sources */,
+				6276DB972A29069600F2F0F4 /* ControlView.swift in Sources */,
+				62B7CC262A2D1F760086F476 /* StringExtenions.swift in Sources */,
+				62A0E2DD2A2E5D7100891999 /* ProfileSettingsView.swift in Sources */,
+				62B7CC132A2C03E10086F476 /* HapticsService.swift in Sources */,
+				62F7A5B429E387E90005E833 /* AlarmSettingsView.swift in Sources */,
+				62A0E2E02A2E633300891999 /* LocationManager.swift in Sources */,
+				629AD9952A34A4060047CEFA /* CreatePackageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,15 +612,20 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"WakeUp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 2NPB27G7C4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WakeUp/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "For get user location.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -303,15 +646,20 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"WakeUp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 2NPB27G7C4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WakeUp/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "For get user location.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -347,6 +695,84 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		62545F2F2A0A55A100EF6B71 /* XCRemoteSwiftPackageReference "SwipeActions" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aheze/SwipeActions";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		6276DB982A2906C700F2F0F4 /* XCRemoteSwiftPackageReference "AxisTabView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jasudev/AxisTabView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.1;
+			};
+		};
+		6280D7722A09CAC700424191 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
+		629DDE2529E5756900186056 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/markiv/SwiftUI-Shimmer";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		62545F302A0A55A200EF6B71 /* SwipeActions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 62545F2F2A0A55A100EF6B71 /* XCRemoteSwiftPackageReference "SwipeActions" */;
+			productName = SwipeActions;
+		};
+		6276DB992A2906C700F2F0F4 /* AxisTabView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6276DB982A2906C700F2F0F4 /* XCRemoteSwiftPackageReference "AxisTabView" */;
+			productName = AxisTabView;
+		};
+		6280D7732A09CAC700424191 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6280D7722A09CAC700424191 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		6280D7752A09CAC700424191 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6280D7722A09CAC700424191 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		6280D7772A09CAC700424191 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6280D7722A09CAC700424191 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		6280D7792A09CAC700424191 /* FirebaseFunctions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6280D7722A09CAC700424191 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFunctions;
+		};
+		6280D77B2A09CAC700424191 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6280D7722A09CAC700424191 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		629DDE2629E5756900186056 /* Shimmer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 629DDE2529E5756900186056 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */;
+			productName = Shimmer;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		62F7A5A629E386910005E833 /* WakeUp.xcdatamodeld */ = {
