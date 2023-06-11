@@ -38,11 +38,13 @@
 		629AD9992A34ABD70047CEFA /* CreatePackageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AD9982A34ABD70047CEFA /* CreatePackageViewModel.swift */; };
 		629AD99C2A34F2B70047CEFA /* UserStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AD99B2A34F2B70047CEFA /* UserStorageService.swift */; };
 		629AD99E2A34F7250047CEFA /* ProfileSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AD99D2A34F7250047CEFA /* ProfileSettingsViewModel.swift */; };
+		629AD9A02A3538F40047CEFA /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AD99F2A3538F40047CEFA /* ImageLoader.swift */; };
+		629AD9A22A353C7B0047CEFA /* ImageStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AD9A12A353C7B0047CEFA /* ImageStorageService.swift */; };
 		629DDDF629E4DEFE00186056 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629DDDF529E4DEFE00186056 /* ProfileView.swift */; };
 		629DDDF829E4DF0D00186056 /* AlarmListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629DDDF729E4DF0D00186056 /* AlarmListView.swift */; };
 		629DDDFA29E4DF5100186056 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629DDDF929E4DF5100186056 /* MapView.swift */; };
 		629DDE1C29E4E15C00186056 /* AudioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629DDE1B29E4E15C00186056 /* AudioViewModel.swift */; };
-		629DDE2029E4E17800186056 /* VolumeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629DDE1F29E4E17800186056 /* VolumeViewModel.swift */; };
+		629DDE2029E4E17800186056 /* MPVolumeViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629DDE1F29E4E17800186056 /* MPVolumeViewExtension.swift */; };
 		629DDE2729E5756900186056 /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 629DDE2629E5756900186056 /* Shimmer */; };
 		629DDE2929E5796F00186056 /* AlarmCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629DDE2829E5796F00186056 /* AlarmCellView.swift */; };
 		62A0E2DA2A2E3A9E00891999 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0E2D92A2E3A9E00891999 /* HomeViewModel.swift */; };
@@ -100,11 +102,13 @@
 		629AD9982A34ABD70047CEFA /* CreatePackageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePackageViewModel.swift; sourceTree = "<group>"; };
 		629AD99B2A34F2B70047CEFA /* UserStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorageService.swift; sourceTree = "<group>"; };
 		629AD99D2A34F7250047CEFA /* ProfileSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsViewModel.swift; sourceTree = "<group>"; };
+		629AD99F2A3538F40047CEFA /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		629AD9A12A353C7B0047CEFA /* ImageStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStorageService.swift; sourceTree = "<group>"; };
 		629DDDF529E4DEFE00186056 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		629DDDF729E4DF0D00186056 /* AlarmListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmListView.swift; sourceTree = "<group>"; };
 		629DDDF929E4DF5100186056 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		629DDE1B29E4E15C00186056 /* AudioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewModel.swift; sourceTree = "<group>"; };
-		629DDE1F29E4E17800186056 /* VolumeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeViewModel.swift; sourceTree = "<group>"; };
+		629DDE1F29E4E17800186056 /* MPVolumeViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPVolumeViewExtension.swift; sourceTree = "<group>"; };
 		629DDE2829E5796F00186056 /* AlarmCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCellView.swift; sourceTree = "<group>"; };
 		62A0E2D92A2E3A9E00891999 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		62A0E2DC2A2E5D7100891999 /* ProfileSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsView.swift; sourceTree = "<group>"; };
@@ -200,7 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				62A0E2DF2A2E633300891999 /* LocationManager.swift */,
-				629DDE1F29E4E17800186056 /* VolumeViewModel.swift */,
+				629AD99F2A3538F40047CEFA /* ImageLoader.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -223,6 +227,7 @@
 				62B7CC1E2A2C14880086F476 /* DataBaseService.swift */,
 				62519EBC2A3370D100F14073 /* FireBaseService.swift */,
 				629AD9902A33F2C10047CEFA /* AlertService.swift */,
+				629AD9A12A353C7B0047CEFA /* ImageStorageService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -234,6 +239,7 @@
 				62B7CC152A2C06110086F476 /* DateExtensions.swift.swift */,
 				62B7CC252A2D1F760086F476 /* StringExtenions.swift */,
 				629AD9962A34A57A0047CEFA /* ImagePicker.swift */,
+				629DDE1F29E4E17800186056 /* MPVolumeViewExtension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -432,7 +438,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				629DDE2029E4E17800186056 /* VolumeViewModel.swift in Sources */,
+				629DDE2029E4E17800186056 /* MPVolumeViewExtension.swift in Sources */,
 				62B7CC242A2C24930086F476 /* MusicModel.swift in Sources */,
 				62B7CC362A2D2A490086F476 /* SleepViewModel.swift in Sources */,
 				625448252A13052E008A36C6 /* AlarmSettingsViewModel.swift in Sources */,
@@ -464,6 +470,7 @@
 				629AD9972A34A57A0047CEFA /* ImagePicker.swift in Sources */,
 				62B7CC322A2D21410086F476 /* AuthView.swift in Sources */,
 				62B7CC292A2D1F9F0086F476 /* LoginView.swift in Sources */,
+				629AD9A02A3538F40047CEFA /* ImageLoader.swift in Sources */,
 				62519EC42A33812000F14073 /* NotificationView.swift in Sources */,
 				62A0E2DA2A2E3A9E00891999 /* HomeViewModel.swift in Sources */,
 				62B7CC1D2A2C12150086F476 /* AlarmService.swift in Sources */,
@@ -482,6 +489,7 @@
 				62B7CC262A2D1F760086F476 /* StringExtenions.swift in Sources */,
 				62A0E2DD2A2E5D7100891999 /* ProfileSettingsView.swift in Sources */,
 				62B7CC132A2C03E10086F476 /* HapticsService.swift in Sources */,
+				629AD9A22A353C7B0047CEFA /* ImageStorageService.swift in Sources */,
 				62F7A5B429E387E90005E833 /* AlarmSettingsView.swift in Sources */,
 				62A0E2E02A2E633300891999 /* LocationManager.swift in Sources */,
 				629AD9952A34A4060047CEFA /* CreatePackageView.swift in Sources */,

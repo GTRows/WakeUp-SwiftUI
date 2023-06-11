@@ -11,7 +11,7 @@ import SwiftUI
 struct ProfileView: View {
     @StateObject var alertService = AlertService.shared
     @AppStorage("uid") var userID: String = ""
-    @State private var user : UserModel = Constants.currentUser
+    @State private var user : UserModel = FireBaseService.shared.getUser()
     
     
     init() {
@@ -36,7 +36,7 @@ struct ProfileView: View {
                 .padding(.bottom,20)
                 // ProfileSettingsView navigate
                 NavigationLink(
-                    destination: ProfileSettingsView(user: user),
+                    destination: ProfileSettingsView(viewModel: ProfileSettingsViewModel(user: user)),
                     label: {
                         ZStack{
                             RoundedRectangle(cornerRadius: 10)

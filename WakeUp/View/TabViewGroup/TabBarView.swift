@@ -19,11 +19,11 @@ struct TabBarView: View {
             AxisTabView(selection: $selection, constant: constant) { state in
                 CustomCenterStyleView(state, radius: radius, depth: concaveDepth)
             } content: {
-                ControlView(selection: $selection, constant: $constant, radius: $radius, concaveDepth: $concaveDepth, tag: 0, systemName: "alarm", safeArea: proxy.safeAreaInsets)
+                ControlView(selection: $selection, constant: $constant, radius: $radius, concaveDepth: $concaveDepth, tag: 0, systemName: "house", safeArea: proxy.safeAreaInsets)
                 ControlView(selection: $selection, constant: $constant, radius: $radius, concaveDepth: $concaveDepth,  tag: 1, systemName: "map", safeArea: proxy.safeAreaInsets)
                 ControlView(selection: $selection, constant: $constant, radius: $radius, concaveDepth: $concaveDepth,  tag: 2, systemName: "sleep", safeArea: proxy.safeAreaInsets)
-                ControlView(selection: $selection, constant: $constant, radius: $radius, concaveDepth: $concaveDepth,  tag: 3, systemName: "person", safeArea: proxy.safeAreaInsets)
-                ControlView(selection: $selection, constant: $constant, radius: $radius, concaveDepth: $concaveDepth,  tag: 4, systemName: "gearshape", safeArea: proxy.safeAreaInsets)
+                ControlView(selection: $selection, constant: $constant, radius: $radius, concaveDepth: $concaveDepth,  tag: 3, systemName: "alarm", safeArea: proxy.safeAreaInsets)
+                ControlView(selection: $selection, constant: $constant, radius: $radius, concaveDepth: $concaveDepth,  tag: 4, systemName: "person", safeArea: proxy.safeAreaInsets)
             }
         }
         .animation(.easeInOut, value: constant)
