@@ -8,22 +8,40 @@
 import SwiftUI
 
 struct ProfileSettingsView: View {
-    @StateObject private var viewModel = ProfileSettingsViewModel()
-    @State public var user: UserModel
+    @StateObject private var viewModel: ProfileSettingsViewModel
     @State private var showingImagePicker: Bool = false
+
+    init(viewModel: ProfileSettingsViewModel) {
+        _viewModel = StateObject(wrappedValue: viewModel)
+    }
+
     var body: some View {
         VStack {
             Button {
                 showingImagePicker = true
             } label: {
-                Image(user.avatar)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 250, height: 200)
-                    .clipShape(Circle())
-                    .padding(.top, 50)
+                if let uiImage = viewModel.image {
+                    Image(uiImage: uiImage) // Display the selected image.
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 250, height: 200)
+                        .clipShape(Circle())
+                        .padding(.top, 50)
+                } else if let url = URL(string: viewModel.user.avatar) {
+                    URLImage(url: viewModel.user.avatar)
+                        .frame(width: 250, height: 200)
+                        .clipShape(Circle())
+                        .padding(.top, 50)
+                } else {
+                    Image("placeholder") // Placeholder image if the user avatar URL is not valid.
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 250, height: 200)
+                        .clipShape(Circle())
+                        .padding(.top, 50)
+                }
             }
-            TextField("Name", text: $user.name)
+            TextField("Name", text: $viewModel.user.name)
                 .padding(.horizontal, 10)
                 .padding(.vertical, 5)
                 .cornerRadius(10)
@@ -35,21 +53,12 @@ struct ProfileSettingsView: View {
                 .padding(.bottom)
             Spacer()
             Button(action: {
-                FireBaseService.shared.updateUser(user: user) { result in
-                    switch result {
-                    case let .success(user):
-                        print("User successfully updated")
-                        self.user = user
-                    case let .failure(error):
-                        print("Error updating user: \(error)")
-                        AlertService.shared.show(error: error)
-                    }
-                }
+                viewModel.editUser()
             }) {
                 // sign out view
                 ZStack {
                     RoundedRectangle(cornerRadius: 10)
-                        .foregroundColor(.red)
+                        .foregroundColor(.blue)
                     HStack {
                         Image(systemName: "square.and.pencil")
                         Spacer()
@@ -62,15 +71,15 @@ struct ProfileSettingsView: View {
                 }.frame(width: 250, height: 50)
             }
             .padding(.bottom, 100)
-
         }.sheet(isPresented: $showingImagePicker) {
             ImagePicker(selectedImage: $viewModel.image)
         }
     }
 }
 
-struct ProfileSettingsView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileSettingsView(user: Constants.errrorUser)
-    }
-}
+
+//struct ProfileSettingsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ProfileSettingsView(viewModel: Constants.errrorUser)
+//    }
+//}
