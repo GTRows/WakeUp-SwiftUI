@@ -10,6 +10,7 @@ import FirebaseAuth
 import FirebaseFirestore
 import FirebaseStorage
 import Foundation
+import UIKit
 
 class FireBaseService {
     private init() {}
@@ -37,6 +38,7 @@ class FireBaseService {
                     } else {
                         self.user = userWithId
                         self.userStorageService.saveUser(user: userWithId)
+                        ImageStorageService.shared.store(image: FireBaseService.shared.getAvatar(from: user.avatar), for: user.id)
                         completion(.success(userWithId))
                     }
                 }
@@ -107,6 +109,59 @@ class FireBaseService {
             }
         }
     }
+
+    // MARK: - Image Operations
+
+    func uploadImage(_ image: UIImage, path: String, completion: @escaping (Result<String, Error>) -> Void) {
+        guard let imageData = image.jpegData(compressionQuality: 0.5) else {
+            completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid image"])))
+            return
+        }
+
+        let storageRef = storage.reference()
+        let imageRef = storageRef.child("\(path)/\(UUID().uuidString).jpg")
+
+        imageRef.putData(imageData, metadata: nil) { _, error in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                imageRef.downloadURL { url, error in
+                    if let error = error {
+                        completion(.failure(error))
+                    } else if let url = url {
+                        completion(.success(url.absoluteString))
+                    }
+                }
+            }
+        }
+    }
+
+    func getAvatar(from url: String) -> UIImage {
+            var image = UIImage(systemName: "brain.head.profile") // default image
+
+            // This will create a DispatchGroup
+            let group = DispatchGroup()
+
+            // Enter group
+            group.enter()
+
+            // Run the following code in a background thread
+            DispatchQueue.global().async {
+                let reference = self.storage.reference(forURL: url)
+                reference.getData(maxSize: 1 * 1024 * 1024) { data, _ in
+                    if let data = data, let downloadedImage = UIImage(data: data) {
+                        image = downloadedImage
+                    }
+                    // Leave group once the task is done
+                    group.leave()
+                }
+            }
+
+            // Wait until the task is done
+            group.wait()
+
+            return image!
+        }
 
     // MARK: - Alarms Operations
 
