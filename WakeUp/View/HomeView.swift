@@ -19,6 +19,7 @@ struct HomeView: View {
         NavigationView {
             VStack {
                 HStack {
+                    
                     if let uiImage = ImageStorageService.shared.retrieveImage(for: viewModel.userAvatar) {
                         Image(uiImage: uiImage)
                             .resizable()
@@ -26,7 +27,7 @@ struct HomeView: View {
                             .clipShape(Circle())
                             .padding(.leading, 20)
                     } else {
-                        Image("placeholder") // Here "placeholder" should be the name of your placeholder image.
+                        Image(systemName: "person.fill") // Here "placeholder" should be the name of your placeholder image.
                             .resizable()
                             .frame(width: 50, height: 50)
                             .clipShape(Circle())

@@ -9,16 +9,18 @@ import SwiftUI
 
 struct WorkShopView: View {
     @ObservedObject var viewModel = WorkShopViewModel()
-    init(){}
+
     var body: some View {
-        VStack{
-            ScrollView{
-                Text("WorkShopView")
+        VStack {
+            ScrollView {
+                LazyVStack {
+                    ForEach(Constants.tempPackages) { package in
+                        PackageCellView(viewModel: PackageViewModel(package: package))
+                    }
+                }
             }
         }
     }
-    
-    
 }
 
 struct WorkShopView_Previews: PreviewProvider {

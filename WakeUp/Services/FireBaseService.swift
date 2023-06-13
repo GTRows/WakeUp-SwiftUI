@@ -137,31 +137,37 @@ class FireBaseService {
     }
 
     func getAvatar(from url: String) -> UIImage {
-            var image = UIImage(systemName: "brain.head.profile") // default image
-
-            // This will create a DispatchGroup
-            let group = DispatchGroup()
-
-            // Enter group
-            group.enter()
-
-            // Run the following code in a background thread
-            DispatchQueue.global().async {
-                let reference = self.storage.reference(forURL: url)
-                reference.getData(maxSize: 1 * 1024 * 1024) { data, _ in
-                    if let data = data, let downloadedImage = UIImage(data: data) {
-                        image = downloadedImage
-                    }
-                    // Leave group once the task is done
-                    group.leave()
+        var image = UIImage(systemName: "brain.head.profile") // default image
+        // This will create a DispatchGroup
+        let group = DispatchGroup()
+        // Enter group
+        group.enter()
+        // Run the following code in a background thread
+        DispatchQueue.global().async {
+            let reference = self.storage.reference(forURL: url)
+            reference.getData(maxSize: 1 * 1024 * 1024) { data, _ in
+                if let data = data, let downloadedImage = UIImage(data: data) {
+                    image = downloadedImage
                 }
+                // Leave group once the task is done
+                group.leave()
             }
-
-            // Wait until the task is done
-            group.wait()
-
-            return image!
         }
+        // Wait until the task is done
+        group.wait()
+        return image!
+    }
+
+    func fetchImage(from url: String, completion: @escaping (UIImage) -> Void) {
+        let storageRef = storage.reference(forURL: url)
+        storageRef.getData(maxSize: 1 * 1024 * 1024) { data, _ in
+            if let data = data, let image = UIImage(data: data) {
+                completion(image)
+            } else {
+                completion(UIImage(named: "defaultPackage")!) // Default image
+            }
+        }
+    }
 
     // MARK: - Alarms Operations
 

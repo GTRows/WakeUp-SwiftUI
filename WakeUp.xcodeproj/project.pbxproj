@@ -40,6 +40,7 @@
 		629AD99E2A34F7250047CEFA /* ProfileSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AD99D2A34F7250047CEFA /* ProfileSettingsViewModel.swift */; };
 		629AD9A02A3538F40047CEFA /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AD99F2A3538F40047CEFA /* ImageLoader.swift */; };
 		629AD9A22A353C7B0047CEFA /* ImageStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AD9A12A353C7B0047CEFA /* ImageStorageService.swift */; };
+		629AD9A42A387A3E0047CEFA /* PackageCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AD9A32A387A3E0047CEFA /* PackageCellView.swift */; };
 		629DDDF629E4DEFE00186056 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629DDDF529E4DEFE00186056 /* ProfileView.swift */; };
 		629DDDF829E4DF0D00186056 /* AlarmListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629DDDF729E4DF0D00186056 /* AlarmListView.swift */; };
 		629DDDFA29E4DF5100186056 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629DDDF929E4DF5100186056 /* MapView.swift */; };
@@ -54,6 +55,7 @@
 		62A0E2E52A2EB6AB00891999 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0E2E42A2EB6AB00891999 /* UserModel.swift */; };
 		62A0E2E72A2EC45E00891999 /* AritclesCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0E2E62A2EC45E00891999 /* AritclesCellView.swift */; };
 		62A0E2E92A2EC48300891999 /* AritclesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0E2E82A2EC48300891999 /* AritclesModel.swift */; };
+		62AA2E442A3887D30026E1A1 /* PackageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AA2E432A3887D30026E1A1 /* PackageViewModel.swift */; };
 		62B7CC132A2C03E10086F476 /* HapticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B7CC122A2C03E10086F476 /* HapticsService.swift */; };
 		62B7CC162A2C06110086F476 /* DateExtensions.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B7CC152A2C06110086F476 /* DateExtensions.swift.swift */; };
 		62B7CC182A2C07250086F476 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B7CC172A2C07250086F476 /* Constants.swift */; };
@@ -104,6 +106,7 @@
 		629AD99D2A34F7250047CEFA /* ProfileSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsViewModel.swift; sourceTree = "<group>"; };
 		629AD99F2A3538F40047CEFA /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		629AD9A12A353C7B0047CEFA /* ImageStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStorageService.swift; sourceTree = "<group>"; };
+		629AD9A32A387A3E0047CEFA /* PackageCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageCellView.swift; sourceTree = "<group>"; };
 		629DDDF529E4DEFE00186056 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		629DDDF729E4DF0D00186056 /* AlarmListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmListView.swift; sourceTree = "<group>"; };
 		629DDDF929E4DF5100186056 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -117,6 +120,7 @@
 		62A0E2E42A2EB6AB00891999 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		62A0E2E62A2EC45E00891999 /* AritclesCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AritclesCellView.swift; sourceTree = "<group>"; };
 		62A0E2E82A2EC48300891999 /* AritclesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AritclesModel.swift; sourceTree = "<group>"; };
+		62AA2E432A3887D30026E1A1 /* PackageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageViewModel.swift; sourceTree = "<group>"; };
 		62B7CC122A2C03E10086F476 /* HapticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsService.swift; sourceTree = "<group>"; };
 		62B7CC152A2C06110086F476 /* DateExtensions.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift.swift; sourceTree = "<group>"; };
 		62B7CC172A2C07250086F476 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -250,6 +254,7 @@
 				629DDE2829E5796F00186056 /* AlarmCellView.swift */,
 				62B7CC212A2C20830086F476 /* MusicCellView.swift */,
 				62A0E2E62A2EC45E00891999 /* AritclesCellView.swift */,
+				629AD9A32A387A3E0047CEFA /* PackageCellView.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -345,6 +350,7 @@
 				62EF9AD02A3389900057C1CE /* NotificationViewModel.swift */,
 				629AD9982A34ABD70047CEFA /* CreatePackageViewModel.swift */,
 				629AD99D2A34F7250047CEFA /* ProfileSettingsViewModel.swift */,
+				62AA2E432A3887D30026E1A1 /* PackageViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -465,6 +471,7 @@
 				629AD99C2A34F2B70047CEFA /* UserStorageService.swift in Sources */,
 				62B7CC302A2D20E20086F476 /* InitialView.swift in Sources */,
 				62519EBD2A3370D100F14073 /* FireBaseService.swift in Sources */,
+				62AA2E442A3887D30026E1A1 /* PackageViewModel.swift in Sources */,
 				62B7CC1B2A2C11880086F476 /* SleepView.swift in Sources */,
 				6254C0BF29E58C06002D774F /* AlarmModel.swift in Sources */,
 				629AD9972A34A57A0047CEFA /* ImagePicker.swift in Sources */,
@@ -477,6 +484,7 @@
 				629DDDF629E4DEFE00186056 /* ProfileView.swift in Sources */,
 				6262222C29E58DC500915E6F /* MapViewModel.swift in Sources */,
 				62519EB82A335FA200F14073 /* WorkShopView.swift in Sources */,
+				629AD9A42A387A3E0047CEFA /* PackageCellView.swift in Sources */,
 				62B7CC222A2C20830086F476 /* MusicCellView.swift in Sources */,
 				62519EC22A337F7D00F14073 /* WorkShopViewModel.swift in Sources */,
 				629DDE1C29E4E15C00186056 /* AudioViewModel.swift in Sources */,

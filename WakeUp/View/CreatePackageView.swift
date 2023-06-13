@@ -77,9 +77,8 @@ struct CreatePackageView: View {
 //                    viewModel.createPackage()
                 } else {
                     // show alert for not selected image
-                    
+                    AlertService.shared.showString(title: "Error", message: "You need a select one")
                 }
-
             } label: {
                 Text("Create Package")
                     .font(.headline)

@@ -11,13 +11,15 @@ struct PackageModel: Identifiable {
     var id: UUID
     var name: String
     var image: String
+    var description: String
     var Creator: UserModel
     var alarms: [AlarmModel]
 
-    init(id: UUID, name: String, image: String, Creator: UserModel, alarms: [AlarmModel]) {
+    init(id: UUID, name: String, image: String, description: String, Creator: UserModel, alarms: [AlarmModel]) {
         self.id = id
         self.name = name
         self.image = image
+        self.description = description
         self.Creator = Creator
         self.alarms = alarms
     }
@@ -27,6 +29,7 @@ struct PackageModel: Identifiable {
             "id": id.uuidString,
             "name": name,
             "image": image,
+            "description": description,
             "creator": Creator.toDict(), // assumes UserModel has a toDict function
             "alarms": alarms.map { $0.toDict() }, // assumes AlarmModel has a toDict function
         ]
