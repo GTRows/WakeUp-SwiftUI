@@ -10,33 +10,38 @@ import UIKit
 
 class CreatePackageViewModel: ObservableObject {
     @Published var name: String = ""
-    @Published var vizibility: Bool = false
+    @Published var visibility: Bool = false
     @Published var image: UIImage? = nil
-    @Published var isCreatingPackage: Bool = false
-
+    @Published var description : String = ""
+    var selectedAlarms: [AlarmModel] = []
     var package: PackageModel?
 
-//    func createPackage() {
-//        isCreatingPackage = true
-//        // Assuming you have a UserModel instance named currentUser
-//        let currentUser = UserModel() // This should be the currently logged in user
-//        let alarms = [AlarmModel]() // This should be the alarms associated with the package
-//        if let image = image, let jpegData = image.jpegData(compressionQuality: 0.1) {
-//            package = PackageModel(id: UUID(), name: name, image: jpegData, Creator: currentUser, alarms: alarms)
-//            
-//            if let package = package {
-//                FireBaseService.shared.createPackage(package) { result in
-//                    switch result {
-//                    case .success(let message):
-//                        print(message)
-//                        self.isCreatingPackage = false
-//                    case .failure(let error):
-//                        print("Error creating package: \(error)")
-//                        self.isCreatingPackage = false
-//                    }
-//                }
-//            }
-//        }
-//    }
+    func createPackage(completion: @escaping (Result<Void, Error>) -> Void) {
+        guard let image = image else {
+            completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Missing image"])))
+            return
+        }
 
+        // Upload image first
+        let path = "Packages/\(UUID().uuidString)"
+        FireBaseService.shared.uploadImage(image, path: path) { result in
+            switch result {
+            case .success(let imageUrl):
+                // Image upload successful, create the package
+                let package = PackageModel(id: UUID(), name: self.name, image: imageUrl, description: self.description, visibility: self.visibility, Creator: FireBaseService.shared.getUser(), alarms: AlarmService.shared.getPackageAlarms())
+                FireBaseService.shared.addPackage(package: package) { result in
+                    switch result {
+                    case .success:
+                        self.package = package
+                        completion(.success(()))
+                    case .failure(let error):
+                        completion(.failure(error))
+                    }
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
 }
+

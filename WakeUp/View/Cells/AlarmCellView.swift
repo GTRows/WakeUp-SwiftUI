@@ -82,10 +82,10 @@ struct AlarmCellView: View {
                         }
                     } else if mod == .addPackage {
                         Toggle(isOn: $isOn) {
-                                }
-                                .toggleStyle(CheckboxToggleStyle())
-                                .padding(.trailing, 50)
-                                
+                        }
+                        .toggleStyle(CheckboxToggleStyle())
+                        .padding(.trailing, 50)
+
                     } else {
                         Text("Unknown")
                             .task {
@@ -124,9 +124,8 @@ struct AlarmCellView: View {
         .onChange(of: isOn) { newValue in
             if newValue {
                 AlarmService.shared.addPackageAlarms(alarm: alarm)
-            } else{
+            } else {
                 AlarmService.shared.removePackageAlarms(alarm: alarm)
-            
             }
         }
         .onAppear {

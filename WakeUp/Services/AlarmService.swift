@@ -23,7 +23,7 @@ final class AlarmService {
     private var timer: Timer?
     private var lastTriggeredAlarm: AlarmModel?
 
-    public var packageAlarms: [AlarmModel] = []
+    private var packageAlarms: [AlarmModel] = []
 
     // MARK: - Monitoring Alarms
 

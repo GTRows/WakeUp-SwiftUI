@@ -21,7 +21,9 @@ class FireBaseService {
     private var user: UserModel?
 
     private var userStorageService: UserStorageService = UserStorageService.shared
-
+    private var avatarImage: UIImage?
+    
+    
     // MARK: - User Operations
 
     func createUser(user: UserModel, password: String, completion: @escaping (Result<UserModel, Error>) -> Void) {
@@ -38,7 +40,7 @@ class FireBaseService {
                     } else {
                         self.user = userWithId
                         self.userStorageService.saveUser(user: userWithId)
-                        ImageStorageService.shared.store(image: FireBaseService.shared.getAvatar(from: user.avatar), for: user.id)
+                        ImageStorageService.shared.store(image: FireBaseService.shared.getAvatar(), for: user.id)
                         completion(.success(userWithId))
                     }
                 }
@@ -136,7 +138,11 @@ class FireBaseService {
         }
     }
 
-    func getAvatar(from url: String) -> UIImage {
+    func getAvatar() -> UIImage {
+        if let image = self.avatarImage{
+            return image
+        }
+        let url = getUser().avatar
         var image = UIImage(systemName: "brain.head.profile") // default image
         // This will create a DispatchGroup
         let group = DispatchGroup()
@@ -155,6 +161,7 @@ class FireBaseService {
         }
         // Wait until the task is done
         group.wait()
+        self.avatarImage = image!
         return image!
     }
 
@@ -247,31 +254,74 @@ class FireBaseService {
 
     // MARK: - Packages Operations
 
-    func createPackage(_ package: PackageModel, completion: @escaping (Result<String, Error>) -> Void) {
-//        let storageRef = Storage.storage().reference().child("Packages/\(package.id.uuidString)")
-//        if let uploadData = package.image {
-//            storageRef.putData(uploadData, metadata: nil) { (metadata, error) in
-//                if let error = error {
-//                    completion(.failure(error))
-//                    return
-//                }
-//
-//                storageRef.downloadURL { (url, error) in
-//                    if let error = error {
-//                        completion(.failure(error))
-//                    } else if let downloadURL = url {
-//                        var packageToUpload = package.toDict()
-//                        packageToUpload["image"] = downloadURL.absoluteString
-//                        self.db.collection("Packages").document(package.id.uuidString).setData(packageToUpload) { error in
-//                            if let error = error {
-//                                completion(.failure(error))
-//                            } else {
-//                                completion(.success("Package created successfully"))
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        }
+    func addPackage(package: PackageModel, completion: @escaping (Result<Void, Error>) -> Void) {
+        let packageData: [String: Any] = package.toDict()
+        db.collection("Packages").document(package.id.uuidString).setData(packageData) { error in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.success(()))
+            }
+        }
+    }
+
+    func fetchUserPackages(completion: @escaping (Result<[PackageModel], Error>) -> Void) {
+        guard let user = Auth.auth().currentUser else {
+            completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "User is not logged in"])))
+            return
+        }
+        print("user id: \(user.uid)")
+        db.collection("Packages").whereField("creatorId", isEqualTo: user.uid).getDocuments { querySnapshot, err in
+            if let err = err {
+                print("Error getting documents: \(err)")
+                completion(.failure(err))
+            } else {
+                print("querySnapshot: \(querySnapshot!)")
+                var packages = [PackageModel]()
+                for document in querySnapshot!.documents {
+                    print("\(document.documentID) => \(document.data())")
+                    let package = PackageModel(from: document.data())
+                    packages.append(package)
+                }
+                print("packages: \(packages)")
+                completion(.success(packages))
+            }
+        }
+    }
+
+    func fetchAllPackages(completion: @escaping (Result<[PackageModel], Error>) -> Void) {
+        db.collection("Packages").getDocuments { querySnapshot, err in
+            if let err = err {
+                completion(.failure(err))
+            } else {
+                var packages = [PackageModel]()
+                for document in querySnapshot!.documents {
+                    let package = PackageModel(from: document.data())
+                    packages.append(package)
+                }
+                completion(.success(packages))
+            }
+        }
+    }
+
+    func deletePackage(packageID: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        db.collection("Packages").document(packageID).delete { err in
+            if let err = err {
+                completion(.failure(err))
+            } else {
+                completion(.success(()))
+            }
+        }
+    }
+
+    func updatePackage(package: PackageModel, completion: @escaping (Result<Void, Error>) -> Void) {
+        let packageData: [String: Any] = package.toDict()
+        db.collection("Packages").document(package.id.uuidString).updateData(packageData) { error in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.success(()))
+            }
+        }
     }
 }

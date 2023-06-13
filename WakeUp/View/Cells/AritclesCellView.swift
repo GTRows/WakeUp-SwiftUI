@@ -11,10 +11,12 @@ struct AritclesCellView: View {
     var article: ArticlesModel
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 20)
-                .fill(Color("Gray"))
-                .frame(width: UIScreen.main.bounds.width - 40, height: 350)
-                .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 0)
+//            RoundedRectangle(cornerRadius: 20)
+//                .fill(Color("Gray"))
+//                .frame(width: UIScreen.main.bounds.width - 40, height: 350)
+//                .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 0)
+            
+            
             VStack(alignment: .leading) {
                 Image(article.image)
                     .resizable()
@@ -32,8 +34,12 @@ struct AritclesCellView: View {
                     .font(.subheadline)
                     .frame(width: UIScreen.main.bounds.width - 60, alignment: .leading)
                     .padding(.horizontal, 20)
-                    .padding(.bottom, 20)
+                    .padding(.top, 20)
             }
+            .padding(.vertical)
+            .background(Color("DarkGray"))
+            .cornerRadius(20)
+            
         }
     }
 }

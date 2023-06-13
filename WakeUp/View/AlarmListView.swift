@@ -88,7 +88,9 @@ struct AlarmListView: View {
                                 AlarmCellView(alarm: AlarmModel(from: alarm), mod: AlarmCellViewMode.edit)
                             } leadingActions: { context in
                                 SwipeAction("Create Package") {
+                                    AlarmService.shared.clearPackageAlarms()
                                     self.selectedAlarm = alarm
+                                    AlarmService.shared.addPackageAlarms(alarm: AlarmModel(from: alarm))
                                     isAddPackage = true
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                                         context.state.wrappedValue = .closed

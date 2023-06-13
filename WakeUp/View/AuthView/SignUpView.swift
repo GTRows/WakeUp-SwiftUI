@@ -120,18 +120,7 @@ struct SignUpView: View {
                 Spacer()
 
                 Button {
-//                    Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-//                        if let error = error {
-//                            print(error)
-//                            return
-//                        }
-//                        if let authResult = authResult {
-//                            print(authResult.user.uid)
-//                            userID = authResult.user.uid
-//                        }
-//                    }
-//
-                    let user = UserModel(id: "", name: name, email: email, avatar: "avatar_url")
+                    let user = UserModel(id: "", name: name, email: email, avatar: "https://firebasestorage.googleapis.com/v0/b/wakeupapp-8a6b0.appspot.com/o/Avatars%2Fdefault.jpg?alt=media&token=10ce5f13-15c1-4333-af41-0eb902710a72")
                     FireBaseService.shared.createUser(user: user, password: password) { result in
                         switch result{
                         case .success(let createdUser):

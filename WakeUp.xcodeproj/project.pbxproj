@@ -198,6 +198,8 @@
 		62A0E2DB2A2E5D6200891999 /* SettingsView */ = {
 			isa = PBXGroup;
 			children = (
+				62F7A5B329E387E90005E833 /* AlarmSettingsView.swift */,
+				629AD9942A34A4060047CEFA /* CreatePackageView.swift */,
 				629DDDF529E4DEFE00186056 /* ProfileView.swift */,
 				62A0E2DC2A2E5D7100891999 /* ProfileSettingsView.swift */,
 			);
@@ -328,10 +330,8 @@
 				62519EB72A335FA200F14073 /* WorkShopView.swift */,
 				629DDDF729E4DF0D00186056 /* AlarmListView.swift */,
 				62B7CC1A2A2C11880086F476 /* SleepView.swift */,
-				62F7A5B329E387E90005E833 /* AlarmSettingsView.swift */,
 				62A0E2DB2A2E5D6200891999 /* SettingsView */,
 				62B7CC202A2C206F0086F476 /* Cells */,
-				629AD9942A34A4060047CEFA /* CreatePackageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

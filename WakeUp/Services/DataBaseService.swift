@@ -17,6 +17,17 @@ final class DatabaseService {
     private init() {
     }
     
+    // Save changes function
+    func saveChanges() {
+        do {
+            try context.save()
+        } catch {
+            print("Error saving changes: \(error)")
+        }
+    }
+    
+    // MARK: - Alarm CRUD Operations
+    
     func fetchAlarms() -> [AlarmModel] {
         var alarms: [AlarmModel] = []
         let fetchRequest: NSFetchRequest<Alarm> = Alarm.fetchRequest()
@@ -84,16 +95,5 @@ final class DatabaseService {
         context.delete(alarm)
         saveChanges()
     }
-    
-    // Save changes function
-    func saveChanges() {
-        do {
-            try context.save()
-        } catch {
-            print("Error saving changes: \(error)")
-        }
-    }
-    
-    
     
 }

@@ -24,4 +24,10 @@ class PackageViewModel: ObservableObject {
             }
         }
     }
+
+    public func usePackage() {
+        for alarm in package.alarms {
+            DatabaseService.shared.addAlarm(alarm: alarm)
+        }
+    }
 }

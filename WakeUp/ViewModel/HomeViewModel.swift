@@ -19,11 +19,13 @@ class HomeViewModel: ObservableObject{
     @Published var isHaveAlarm = false
     @Published var articles: [ArticlesModel] = []
     
+//    @Published var avatarImage: UIImage?
+    
     var nearestActiveAlarm : AlarmModel = AlarmModel()
     
     init(){
         AlarmService.shared.checkNearestActiveAlarm()
-        
+//        avatarImage = FireBaseService.shared.getAvatar()
         user = FireBaseService.shared.getUser()
         greetingMessage = Constants().getRandomGreeting()
         quote = Constants.tempQuote

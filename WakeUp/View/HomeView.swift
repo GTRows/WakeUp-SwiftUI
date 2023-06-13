@@ -20,6 +20,21 @@ struct HomeView: View {
             VStack {
                 HStack {
                     
+//                    if let image = viewModel.avatarImage {
+//                        Image(uiImage: image)
+//                            .resizable()
+//                            .frame(width: 50, height: 50)
+//                            .clipShape(Circle())
+//                            .padding(.leading, 20)
+//                    } else {
+//                        Image(systemName: "person.fill")
+//                            .resizable()
+//                            .frame(width: 50, height: 50)
+//                            .clipShape(Circle())
+//                            .padding(.leading, 20)
+//                            .shimmering()
+//                    }
+                    
                     if let uiImage = ImageStorageService.shared.retrieveImage(for: viewModel.userAvatar) {
                         Image(uiImage: uiImage)
                             .resizable()
