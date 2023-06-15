@@ -20,26 +20,16 @@ struct ProfileSettingsView: View {
             Button {
                 showingImagePicker = true
             } label: {
-                if let uiImage = viewModel.image {
-                    Image(uiImage: uiImage) // Display the selected image.
+                ZStack {
+                    Image(uiImage: viewModel.image ?? UIImage(systemName: "person.crop.circle.fill")!)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
+                        .background(Color("Gray"))
                         .frame(width: 250, height: 200)
-                        .clipShape(Circle())
                         .padding(.top, 50)
-                } else if let url = URL(string: viewModel.user.avatar) {
-                    URLImage(url: viewModel.user.avatar)
-                        .frame(width: 250, height: 200)
-                        .clipShape(Circle())
-                        .padding(.top, 50)
-                } else {
-                    Image("placeholder") // Placeholder image if the user avatar URL is not valid.
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 250, height: 200)
-                        .clipShape(Circle())
-                        .padding(.top, 50)
-                }
+                        .frame(maxHeight: 200)
+                }.frame(width: UIScreen.main.bounds.width - 40, height: 200)
+                    .padding()
             }
             TextField("Name", text: $viewModel.user.name)
                 .padding(.horizontal, 10)
@@ -77,9 +67,8 @@ struct ProfileSettingsView: View {
     }
 }
 
-
-//struct ProfileSettingsView_Previews: PreviewProvider {
+// struct ProfileSettingsView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        ProfileSettingsView(viewModel: Constants.errrorUser)
 //    }
-//}
+// }

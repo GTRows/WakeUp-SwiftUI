@@ -9,20 +9,24 @@ import Foundation
 import UIKit
 
 class ProfileSettingsViewModel: ObservableObject {
-    @Published var image: UIImage? = nil
+    @Published var image: UIImage?
     @Published var user: UserModel
 
-    private let imageStorageService: ImageStorageService
 
-    init(user: UserModel, imageStorageService: ImageStorageService = .shared) {
+    init(user: UserModel) {
         self.user = user
-        self.imageStorageService = imageStorageService
-        
-        if let image = imageStorageService.retrieveImage(for: user.avatar) {
-            self.image = image
+        self.loadAvatar()
+    }
+    
+    
+    func loadAvatar() {
+        FireBaseService.shared.getAvatar { image in
+            DispatchQueue.main.async {
+                self.image = image
+            }
         }
     }
-
+    
     func editUser() {
         if let selectedImage = image {
             FireBaseService.shared.uploadImage(selectedImage, path: "Avatars") { result in
@@ -32,17 +36,18 @@ class ProfileSettingsViewModel: ObservableObject {
                     var updatedUser = self.user
                     updatedUser.avatar = url
                     self.updateUser(user: updatedUser)
-                    self.imageStorageService.store(image: selectedImage, for: url)
+//                    self.imageStorageService.store(image: selectedImage, for: url)
                 case let .failure(error):
                     print("Error uploading image: \(error)")
                     AlertService.shared.show(error: error)
                 }
             }
+            
         } else {
-            self.updateUser(user: user)
+            updateUser(user: user)
         }
     }
-    
+
     private func updateUser(user: UserModel) {
         FireBaseService.shared.updateUser(user: user) { result in
             switch result {

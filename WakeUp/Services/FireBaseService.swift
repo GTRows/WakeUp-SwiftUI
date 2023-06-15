@@ -21,9 +21,9 @@ class FireBaseService {
     private var user: UserModel?
 
     private var userStorageService: UserStorageService = UserStorageService.shared
-    private var avatarImage: UIImage?
-    
-    
+
+    private var _avatarImage: UIImage?
+
     // MARK: - User Operations
 
     func createUser(user: UserModel, password: String, completion: @escaping (Result<UserModel, Error>) -> Void) {
@@ -40,7 +40,7 @@ class FireBaseService {
                     } else {
                         self.user = userWithId
                         self.userStorageService.saveUser(user: userWithId)
-                        ImageStorageService.shared.store(image: FireBaseService.shared.getAvatar(), for: user.id)
+//                        ImageStorageService.shared.store(image: FireBaseService.shared.getAvatar(), for: user.id)
                         completion(.success(userWithId))
                     }
                 }
@@ -132,38 +132,30 @@ class FireBaseService {
                         completion(.failure(error))
                     } else if let url = url {
                         completion(.success(url.absoluteString))
+                        self._avatarImage = nil
                     }
                 }
             }
         }
     }
 
-    func getAvatar() -> UIImage {
-        if let image = self.avatarImage{
-            return image
-        }
-        let url = getUser().avatar
-        var image = UIImage(systemName: "brain.head.profile") // default image
-        // This will create a DispatchGroup
-        let group = DispatchGroup()
-        // Enter group
-        group.enter()
-        // Run the following code in a background thread
-        DispatchQueue.global().async {
+    func getAvatar(completionHandler: @escaping (UIImage?) -> Void) {
+            if let cachedImage = _avatarImage {
+                completionHandler(cachedImage)
+                return
+            }
+            
+            let url = getUser().avatar
             let reference = self.storage.reference(forURL: url)
             reference.getData(maxSize: 1 * 1024 * 1024) { data, _ in
                 if let data = data, let downloadedImage = UIImage(data: data) {
-                    image = downloadedImage
+                    self._avatarImage = downloadedImage
+                    completionHandler(downloadedImage)
+                } else {
+                    completionHandler(UIImage(systemName: "brain.head.profile"))
                 }
-                // Leave group once the task is done
-                group.leave()
             }
         }
-        // Wait until the task is done
-        group.wait()
-        self.avatarImage = image!
-        return image!
-    }
 
     func fetchImage(from url: String, completion: @escaping (UIImage) -> Void) {
         let storageRef = storage.reference(forURL: url)

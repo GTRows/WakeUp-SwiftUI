@@ -20,11 +20,14 @@
 		6254C0BA29E58A5A002D774F /* TimeToWakeUp.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6254C0B929E58A5A002D774F /* TimeToWakeUp.mp3 */; };
 		6254C0BF29E58C06002D774F /* AlarmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6254C0BE29E58C06002D774F /* AlarmModel.swift */; };
 		6262222C29E58DC500915E6F /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6262222B29E58DC500915E6F /* MapViewModel.swift */; };
+		627344F62A3B583B007F014E /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627344F52A3B583B007F014E /* ProfileViewModel.swift */; };
 		6276DB912A29068700F2F0F4 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6276DB902A29068700F2F0F4 /* TabBarView.swift */; };
 		6276DB932A29068E00F2F0F4 /* TabButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6276DB922A29068E00F2F0F4 /* TabButtonView.swift */; };
 		6276DB952A29069200F2F0F4 /* CustomCenterStyleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6276DB942A29069200F2F0F4 /* CustomCenterStyleView.swift */; };
 		6276DB972A29069600F2F0F4 /* ControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6276DB962A29069600F2F0F4 /* ControlView.swift */; };
 		6276DB9A2A2906C700F2F0F4 /* AxisTabView in Frameworks */ = {isa = PBXBuildFile; productRef = 6276DB992A2906C700F2F0F4 /* AxisTabView */; };
+		627BD8C52A3A23E300FA0418 /* AlarmTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627BD8C42A3A23E300FA0418 /* AlarmTaskView.swift */; };
+		627BD8C72A3A23F700FA0418 /* AlarmMusicSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627BD8C62A3A23F700FA0418 /* AlarmMusicSelectionView.swift */; };
 		6280D7712A09C9D500424191 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6280D7702A09C9D500424191 /* GoogleService-Info.plist */; };
 		6280D7742A09CAC700424191 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 6280D7732A09CAC700424191 /* FirebaseAuth */; };
 		6280D7762A09CAC700424191 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 6280D7752A09CAC700424191 /* FirebaseDatabase */; };
@@ -92,10 +95,13 @@
 		6254C0B929E58A5A002D774F /* TimeToWakeUp.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = TimeToWakeUp.mp3; sourceTree = "<group>"; };
 		6254C0BE29E58C06002D774F /* AlarmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmModel.swift; sourceTree = "<group>"; };
 		6262222B29E58DC500915E6F /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		627344F52A3B583B007F014E /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		6276DB902A29068700F2F0F4 /* TabBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		6276DB922A29068E00F2F0F4 /* TabButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabButtonView.swift; sourceTree = "<group>"; };
 		6276DB942A29069200F2F0F4 /* CustomCenterStyleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCenterStyleView.swift; sourceTree = "<group>"; };
 		6276DB962A29069600F2F0F4 /* ControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlView.swift; sourceTree = "<group>"; };
+		627BD8C42A3A23E300FA0418 /* AlarmTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTaskView.swift; sourceTree = "<group>"; };
+		627BD8C62A3A23F700FA0418 /* AlarmMusicSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmMusicSelectionView.swift; sourceTree = "<group>"; };
 		6280D7702A09C9D500424191 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6280D77F2A09CD5500424191 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		629AD9902A33F2C10047CEFA /* AlertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertService.swift; sourceTree = "<group>"; };
@@ -202,6 +208,8 @@
 				629AD9942A34A4060047CEFA /* CreatePackageView.swift */,
 				629DDDF529E4DEFE00186056 /* ProfileView.swift */,
 				62A0E2DC2A2E5D7100891999 /* ProfileSettingsView.swift */,
+				627BD8C42A3A23E300FA0418 /* AlarmTaskView.swift */,
+				627BD8C62A3A23F700FA0418 /* AlarmMusicSelectionView.swift */,
 			);
 			path = SettingsView;
 			sourceTree = "<group>";
@@ -351,6 +359,7 @@
 				629AD9982A34ABD70047CEFA /* CreatePackageViewModel.swift */,
 				629AD99D2A34F7250047CEFA /* ProfileSettingsViewModel.swift */,
 				62AA2E432A3887D30026E1A1 /* PackageViewModel.swift */,
+				627344F52A3B583B007F014E /* ProfileViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -444,6 +453,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				627BD8C72A3A23F700FA0418 /* AlarmMusicSelectionView.swift in Sources */,
 				629DDE2029E4E17800186056 /* MPVolumeViewExtension.swift in Sources */,
 				62B7CC242A2C24930086F476 /* MusicModel.swift in Sources */,
 				62B7CC362A2D2A490086F476 /* SleepViewModel.swift in Sources */,
@@ -497,8 +507,10 @@
 				62B7CC262A2D1F760086F476 /* StringExtenions.swift in Sources */,
 				62A0E2DD2A2E5D7100891999 /* ProfileSettingsView.swift in Sources */,
 				62B7CC132A2C03E10086F476 /* HapticsService.swift in Sources */,
+				627344F62A3B583B007F014E /* ProfileViewModel.swift in Sources */,
 				629AD9A22A353C7B0047CEFA /* ImageStorageService.swift in Sources */,
 				62F7A5B429E387E90005E833 /* AlarmSettingsView.swift in Sources */,
+				627BD8C52A3A23E300FA0418 /* AlarmTaskView.swift in Sources */,
 				62A0E2E02A2E633300891999 /* LocationManager.swift in Sources */,
 				629AD9952A34A4060047CEFA /* CreatePackageView.swift in Sources */,
 			);

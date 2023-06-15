@@ -32,6 +32,7 @@ struct AlarmCellView: View {
             RoundedRectangle(cornerRadius: cellCornerRadius)
                 .fill(Color(#colorLiteral(red: 0.2083333283662796, green: 0.2083333283662796, blue: 0.2083333283662796, alpha: 1)))
                 .frame(width: cellWidth, height: cellHeight)
+
             VStack {
                 HStack {
                     Text(alarm.name)
@@ -99,6 +100,7 @@ struct AlarmCellView: View {
                         .fill(Color(#colorLiteral(red: 0.27916666865348816, green: 0.27916666865348816, blue: 0.27916666865348816, alpha: 0.7200000286102295)))
                         .clipShape(RoundedRectangle(cornerRadius: cellCornerRadius)
                             .path(in: CGRect(x: 0, y: 0, width: cellWidth, height: 40)))
+                        .padding(.top, 6)
                         .frame(width: cellWidth, height: 40)
                     HStack {
                         Text("Repeat")
@@ -117,7 +119,7 @@ struct AlarmCellView: View {
                                 .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
                                 .padding(.trailing, 30)
                         }
-                    }
+                    }.padding(.top, 8)
                 }
             }
         }

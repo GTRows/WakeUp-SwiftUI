@@ -11,34 +11,38 @@ import SwiftUI
 struct ProfileView: View {
     @StateObject var alertService = AlertService.shared
     @AppStorage("uid") var userID: String = ""
-    @State private var user : UserModel = FireBaseService.shared.getUser()
-    
-    
+    @State private var user: UserModel = FireBaseService.shared.getUser()
+    @ObservedObject var viewModel = ProfileViewModel()
+
     init() {
-        self.user = FireBaseService.shared.getUser()
+        user = FireBaseService.shared.getUser()
     }
-    
+
     var body: some View {
         NavigationStack {
             VStack {
-                Image(user.avatar)
+                Image(uiImage: viewModel.avatarImage ?? UIImage(systemName: "person.crop.circle")!)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 250, height: 200)
-                    .clipShape(Circle())
-                    .padding(.top, 50)
+                    .background(Color("Gray"))
+                    .frame(width: UIScreen.main.bounds.width - 40, height: 200)
+                    .padding()
+                    .onAppear(){
+                        viewModel.loadAvatar()
+                    }
+
                 VStack {
                     Text(user.name)
                         .fontWeight(.bold)
                     Text(user.email)
                         .font(.caption)
                 }
-                .padding(.bottom,20)
+                .padding(.bottom, 20)
                 // ProfileSettingsView navigate
                 NavigationLink(
                     destination: ProfileSettingsView(viewModel: ProfileSettingsViewModel(user: user)),
                     label: {
-                        ZStack{
+                        ZStack {
                             RoundedRectangle(cornerRadius: 10)
                                 .foregroundColor(.gray)
                             HStack {
@@ -56,7 +60,7 @@ struct ProfileView: View {
                     }
                 )
                 // empty view
-                ZStack{
+                ZStack {
                     RoundedRectangle(cornerRadius: 10)
                         .foregroundColor(.gray)
                     HStack {
@@ -72,7 +76,7 @@ struct ProfileView: View {
                 }.frame(width: 250, height: 50)
                     .foregroundColor(.gray)
                     .padding()
-                ZStack{
+                ZStack {
                     RoundedRectangle(cornerRadius: 10)
                         .foregroundColor(.gray)
                     HStack {
@@ -87,7 +91,7 @@ struct ProfileView: View {
                     .padding()
                 }.frame(width: 250, height: 50)
                     .foregroundColor(.gray)
-                
+
                 Spacer()
                 Button(action: {
                     let firebaseAuth = Auth.auth()
@@ -102,7 +106,7 @@ struct ProfileView: View {
                     }
                 }) {
                     // sign out view
-                    ZStack{
+                    ZStack {
                         RoundedRectangle(cornerRadius: 10)
                             .foregroundColor(.red)
                         HStack {
@@ -117,7 +121,7 @@ struct ProfileView: View {
                     }.frame(width: 250, height: 50)
                 }
                 .padding(.bottom, 100)
-            
+
             }.alert(isPresented: $alertService.isPresenting) {
                 alertService.alert
             }

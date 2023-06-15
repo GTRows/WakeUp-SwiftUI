@@ -19,8 +19,15 @@ struct AlarmSettingsView: View {
 
     @ObservedObject var alarmViewModel: AlarmSettingsViewModel
     @ObservedObject var alarm: AlarmModel
+
     let Music = AudioViewModel()
     var action: AlarmAction
+
+    private let overlayRectangleWidth: CGFloat = CGFloat(UIScreen.main.bounds.width - 7)
+    private var overlayRectangleView: some View {
+        RoundedRectangle(cornerRadius: 20)
+            .stroke(Color("Orange"), lineWidth: 2)
+    }
 
     init(alarm: AlarmModel, action: AlarmAction) {
         _alarm = ObservedObject(initialValue: alarm)
@@ -31,89 +38,180 @@ struct AlarmSettingsView: View {
     var body: some View {
         NavigationView {
             VStack {
-                TextField("Alarm Name", text: $alarm.name)
+                // stick
+                Rectangle()
+                    .fill(.white)
+                    .frame(width: 75, height: 5, alignment: .center)
+                    .cornerRadius(100)
+                    .padding(.top)
+
+                // Select time
+                Text("Alarm Settings View")
                     .padding(.top)
                     .font(.title)
-                    .multilineTextAlignment(.center)
-
-                Text("Select Wake-Up Time:")
-                    .font(.headline)
-                    .padding()
-
-                HStack {
-                    Spacer()
+                    .fontWeight(.light)
+                    .foregroundColor(.white)
+                    .padding(.bottom, 10)
+                ScrollView {
                     DatePicker("", selection: $wakeUpTime, displayedComponents: .hourAndMinute)
                         .datePickerStyle(.wheel)
+                        .frame(width: UIScreen.main.bounds.width - 100, alignment: .center)
+                        .padding(.horizontal)
                         .onAppear {
                             let calendar = Calendar.current
                             var components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: wakeUpTime)
                             components.hour = alarm.hour
                             components.minute = alarm.minute
-
                             if let updatedWakeUpTime = calendar.date(from: components) {
                                 wakeUpTime = updatedWakeUpTime
                             }
                         }
-                    Spacer()
-                }
+                    // conf view
+                    VStack {
+                        // name area
+                        HStack {
+                            Text("Name")
 
-                HStack {
-                    Text("Repeat on:")
-                        .padding(.leading)
-                    Spacer()
-                }
-
-                HStack {
-                    ForEach(0 ..< 7) { index in
-                        Button(action: {
-                            toggleRepeatDay(index)
-                        }) {
-                            Text(Constants.daysOfWeek[index])
-                                .frame(width: 40)
-                                .font(.subheadline)
-                                .foregroundColor(alarm.recurringDays.contains(Constants.daysOfWeek[index]) ? .black : .black)
-                                .padding(.horizontal, 3)
-                                .padding(.vertical, 10)
-                                .background(alarm.recurringDays.contains(Constants.daysOfWeek[index]) ? Color.blue : Color.gray)
-                                .cornerRadius(7)
+                            TextField("Alarm Name", text: $alarm.name)
+                                .font(.title)
+                                .frame(width: UIScreen.main.bounds.width - 100)
+                                .multilineTextAlignment(.center)
                         }
-                    }
-                }
-                .padding(.horizontal)
+                        .frame(height: 50)
+                        .overlay(
+                            overlayRectangleView
+                                .frame(width: overlayRectangleWidth)
+                        )
+                        .padding(.vertical, 5)
 
-                HStack {
-                    Text("Vibrate:")
-                        .padding(.leading)
-                    Spacer()
-                    Toggle("", isOn: $vibrateState)
-                        .toggleStyle(SwitchToggleStyle(tint: Color("Orange")))
-                        .onChange(of: vibrateState) { newValue in
-                            self.vibrateState = newValue
+                        // Vibrate area
+                        HStack {
+                            Text("Vibrate")
+                                .padding(.leading, 28)
+                            Spacer()
+                            Toggle("", isOn: $vibrateState)
+                                .toggleStyle(SwitchToggleStyle(tint: Color("Orange")))
+                                .onChange(of: vibrateState) { newValue in
+                                    self.vibrateState = newValue
+                                }
+                                .padding(.horizontal, 28)
+                        }.frame(height: 50)
+                            .overlay(
+                                overlayRectangleView
+                                    .frame(width: overlayRectangleWidth)
+                            )
+                            .padding(.vertical, 5)
+
+                        // Volume area
+                        HStack {
+                            Text("Volume Level")
+                                .padding(.leading, 28)
+                            Slider(value: $volumeLevel, in: 0 ... 1, step: 0.1)
+                                .padding(.horizontal, 28)
+                                .accentColor(Color("Orange"))
+                                .onChange(of: volumeLevel) { newValue in
+                                    self.volumeLevel = newValue
+                                }
+                        }.frame(height: 50)
+                            .onAppear {
+                                self.volumeLevel = Float(alarm.volume) / 100
+                                if self.previewState {
+                                    MPVolumeView.setVolume(Float(volumeLevel))
+                                }
+                            }
+                            .overlay(
+                                overlayRectangleView
+                                    .frame(width: overlayRectangleWidth)
+
+                            ).padding(.vertical, 5)
+
+                        // Navigation Tasks
+                        NavigationLink(destination: AlarmTaskView()) {
+                            HStack {
+                                Text("Tasks")
+                                    .padding(.leading, 28)
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                                    .padding(.trailing, 28)
+                            }
+                        }.frame(height: 50)
+                            .foregroundColor(.white) // temp
+                            .overlay(
+                                overlayRectangleView
+                                    .frame(width: overlayRectangleWidth)
+                            )
+                            .padding(.vertical, 5)
+
+                        // Navigaton Musics
+                        NavigationLink(destination: AlarmTaskView()) {
+                            HStack {
+                                Text("Sensor Settings")
+                                    .padding(.leading, 28)
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                                    .padding(.trailing, 28)
+                            }
+                        }.frame(height: 50)
+                            .foregroundColor(.white)
+                            .foregroundColor(.blue) // temp
+                            .overlay(
+                                overlayRectangleView
+                                    .frame(width: overlayRectangleWidth)
+                            ).padding(.vertical, 5)
+
+                        // Navigation Sensors
+                        NavigationLink(destination: AlarmTaskView()) {
+                            HStack {
+                                Text("Alarm Music")
+                                    .padding(.leading, 28)
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                                    .padding(.trailing, 28)
+                            }
+                        }.frame(height: 50)
+                            .foregroundColor(.white)
+                            .foregroundColor(.blue) // temp
+                            .overlay(
+                                overlayRectangleView
+                                    .frame(width: overlayRectangleWidth)
+                            ).padding(.vertical, 5)
+
+                        // Repeat On
+                        VStack {
+                            HStack {
+                                Text("Repeat on:")
+                                    .padding(.leading, 12)
+                                Spacer()
+                            }
+                            HStack {
+                                ForEach(0 ..< 7) { index in
+                                    Button(action: {
+                                        toggleRepeatDay(index)
+                                    }) {
+                                        Text(Constants.daysOfWeek[index])
+                                            .frame(width: 40)
+                                            .font(.subheadline)
+                                            .bold(alarm.recurringDays.contains(Constants.daysOfWeek[index]) ? true : false)
+                                        .foregroundColor(alarm.recurringDays.contains(Constants.daysOfWeek[index]) ? .white : .black)
+                                        .padding(.horizontal, 3)
+                                        .padding(.vertical, 10)
+                                        .background(alarm.recurringDays.contains(Constants.daysOfWeek[index]) ? Color("Orange") : Color.gray)
+                                        .cornerRadius(7)
+                                    }
+                                }
+                            }
                         }.padding(.horizontal)
-                }
-                .padding(.vertical)
-
-                HStack {
-                    Text("Volume Level: \(Int(volumeLevel * 100))%")
-                        .padding(.leading)
-                        .padding(.top)
-                    Spacer()
-                }.onAppear {
-                    self.volumeLevel = Float(alarm.volume) / 100
-                    if self.previewState {
-                        MPVolumeView.setVolume(Float(volumeLevel))
+                            .padding(.vertical, 10)
+                            .overlay(
+                                overlayRectangleView
+                                    .frame(width: overlayRectangleWidth)
+                            )
+                            .padding(.vertical, 5)
                     }
                 }
-
-                Slider(value: $volumeLevel, in: 0 ... 1, step: 0.1)
-                    .padding(.horizontal)
-                    .accentColor(Color("Orange"))
-                    .onChange(of: volumeLevel) { newValue in
-                        self.volumeLevel = newValue
-                    }
-                Spacer()
 
                 VStack {
+                    // Buttons
                     Button(action: {
                         if !self.Music.isPlaying && !self.previewState {
                             self.previewState = true
@@ -122,7 +220,7 @@ struct AlarmSettingsView: View {
                             }
                             MPVolumeView.setVolume(Float(volumeLevel))
                             self.Music.playSound(sound: "NewMorningAlarm", type: "mp3")
-//                            previewAlarm()
+                            //                            previewAlarm()
                             alarmViewModel.previewAlarm()
 
                         } else {
@@ -134,7 +232,6 @@ struct AlarmSettingsView: View {
                         Text("preview alarm")
                             .foregroundColor(Color("Orange"))
                     }
-
                     Button(action: {
                         alarmViewModel.setAlarm(volumeLevel: volumeLevel, action: action, wakeUpTime: wakeUpTime)
                         presentationMode.wrappedValue.dismiss()
@@ -151,11 +248,10 @@ struct AlarmSettingsView: View {
                     .padding(.horizontal)
                 }
             }
-            .padding(.bottom, 100)
             .navigationViewStyle(StackNavigationViewStyle())
         }
     }
-    
+
     func toggleRepeatDay(_ dayIndex: Int) {
         print("dayIndex: \(dayIndex)")
         guard dayIndex >= 0 && dayIndex < Constants.daysOfWeek.count else { return } // Check for valid index

@@ -40,9 +40,7 @@ struct PackageCellView: View {
                         }
                     }
                 }
-
             VStack(alignment: .leading) {
-                
                 if let image = viewModel.image {
                     Image(uiImage: image)
                         .resizable()

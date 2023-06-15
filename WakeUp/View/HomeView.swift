@@ -19,35 +19,17 @@ struct HomeView: View {
         NavigationView {
             VStack {
                 HStack {
-                    
-//                    if let image = viewModel.avatarImage {
-//                        Image(uiImage: image)
-//                            .resizable()
-//                            .frame(width: 50, height: 50)
-//                            .clipShape(Circle())
-//                            .padding(.leading, 20)
-//                    } else {
-//                        Image(systemName: "person.fill")
-//                            .resizable()
-//                            .frame(width: 50, height: 50)
-//                            .clipShape(Circle())
-//                            .padding(.leading, 20)
-//                            .shimmering()
-//                    }
-                    
-                    if let uiImage = ImageStorageService.shared.retrieveImage(for: viewModel.userAvatar) {
-                        Image(uiImage: uiImage)
-                            .resizable()
-                            .frame(width: 50, height: 50)
-                            .clipShape(Circle())
-                            .padding(.leading, 20)
-                    } else {
-                        Image(systemName: "person.fill") // Here "placeholder" should be the name of your placeholder image.
-                            .resizable()
-                            .frame(width: 50, height: 50)
-                            .clipShape(Circle())
-                            .padding(.leading, 20)
-                    }
+                    Image(uiImage: viewModel.avatarImage ?? UIImage(systemName: "person.crop.circle.fill")!)
+                        .resizable()
+                        .background(Color("Gray"))
+                        .aspectRatio(contentMode: .fill)
+                        .clipShape(Circle())
+                        .frame(width: 50, height: 50)
+                        .padding(.leading)
+                        .onAppear(){
+                            viewModel.loadAvatar()
+                        }
+                        
 
                     VStack {
                         Text(viewModel.user.name)
@@ -128,7 +110,7 @@ struct HomeView: View {
                             .padding(.leading, 20)
                         Spacer()
                     }
-                    
+
                     // Article Foreack
                     ForEach(viewModel.articles) { article in
                         AritclesCellView(article: article)
