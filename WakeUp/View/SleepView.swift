@@ -78,6 +78,7 @@ struct SleepView: View {
             }
             Spacer()
         }.onAppear(){
+            
             viewModel.checkAlarm()
         }
     }

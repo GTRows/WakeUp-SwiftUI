@@ -35,6 +35,8 @@ class AlarmModel: ObservableObject {
     @Published var hour: Int
     @Published var minute: Int
     @Published var volume: Int
+    @Published var tasks: [Bool] // math, memory, faceID
+    @Published var sensors: [Bool] // Gyroscope, accelerometer
     @Published var recurringDays: [String]
     @Published var isTriggered: Bool = false
 
@@ -48,6 +50,8 @@ class AlarmModel: ObservableObject {
         hour = Int(alarm.hour)
         minute = Int(alarm.minute)
         volume = Int(alarm.volume)
+        tasks = alarm.tasks as? [Bool] ?? [false, false, false]
+        sensors = alarm.sensors as? [Bool] ?? [false, false]
         recurringDays = alarm.recurringDays as? [String] ?? []
     }
 
@@ -60,10 +64,12 @@ class AlarmModel: ObservableObject {
         hour = dict["hour"] as? Int ?? 0
         minute = dict["minute"] as? Int ?? 0
         volume = dict["volume"] as? Int ?? 0
+        tasks = dict["tasks"] as? [Bool] ?? [false, false, false]
+        sensors = dict["sensors"] as? [Bool] ?? [false, false]
         recurringDays = dict["recurringDays"] as? [String] ?? []
     }
 
-    init(name: String, active: AlarmActiveState, vibrate: VibratingState, tone: String, hour: Int, minute: Int, volume: Int, recurringDays: [String]) {
+    init(name: String, active: AlarmActiveState, vibrate: VibratingState, tone: String, hour: Int, minute: Int, volume: Int, tasks: [Bool], sensors: [Bool], recurringDays: [String]) {
         id = UUID()
         self.name = name
         self.active = active
@@ -72,6 +78,8 @@ class AlarmModel: ObservableObject {
         self.hour = hour
         self.minute = minute
         self.volume = volume
+        self.tasks = tasks
+        self.sensors = sensors
         self.recurringDays = recurringDays
     }
 
@@ -86,8 +94,9 @@ class AlarmModel: ObservableObject {
         let components = calendar.dateComponents([.hour, .minute], from: currentDate)
         hour = components.hour ?? 0
         minute = components.minute ?? 0
-
         volume = Int(AVAudioSession.sharedInstance().outputVolume * 100)
+        tasks = [false, false, false]
+        sensors = [false, false]
         recurringDays = []
     }
 
@@ -101,6 +110,8 @@ class AlarmModel: ObservableObject {
             "hour": hour,
             "minute": minute,
             "volume": volume,
+            "tasks": tasks,
+            "sensors": sensors,
             "recurringDays": recurringDays,
         ]
     }

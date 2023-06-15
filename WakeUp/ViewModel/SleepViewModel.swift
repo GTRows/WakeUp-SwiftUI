@@ -50,17 +50,28 @@ class SleepViewModel: ObservableObject {
         if let alarm = nearestActiveAlarm {
             let alarmTime = DateComponents(hour: Int(alarm.hour), minute: Int(alarm.minute))
             if currentTime == alarmTime && alarm.isTriggered == false {
-                // If the times match, fire the alarm and update the nearest active alarm
-                AlarmService.shared.fireAlarm(alarm: alarm)
-                nearestActiveAlarm?.isTriggered = true
-                if let newAlarm = AlarmService.shared.nearestActiveAlarm {
-                    nearestActiveAlarm = newAlarm
-                    alarmTimeString = String(format: "%02d:%02d", newAlarm.hour, newAlarm.minute)
-                } else {
-                    alarmTimeString = "None"
-                    nearestActiveAlarm = nil
-                    isHaveAlarm = false
+                // Check if user is awake
+                AlarmService.shared.checkUserAwake { (isAwake) in
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                        if isAwake {
+                            print("User awake")
+                            print("Skipped alarm")
+                        } else {
+                            // If the times match, fire the alarm and update the nearest active alarm
+                            AlarmService.shared.fireAlarm(alarm: alarm)
+                            self.nearestActiveAlarm?.isTriggered = true
+                            if let newAlarm = AlarmService.shared.nearestActiveAlarm {
+                                self.nearestActiveAlarm = newAlarm
+                                self.alarmTimeString = String(format: "%02d:%02d", newAlarm.hour, newAlarm.minute)
+                            } else {
+                                self.alarmTimeString = "None"
+                                self.nearestActiveAlarm = nil
+                                self.isHaveAlarm = false
+                            }
+                        }
+                    }
                 }
+
             }
         } else {
             // If there's no nearest active alarm, try to get a new one
@@ -71,4 +82,5 @@ class SleepViewModel: ObservableObject {
             }
         }
     }
+
 }

@@ -17,6 +17,12 @@ DerivedData/
 *.dSYM
 .swiftpm/
 
+# JetBrains IDE User-Specific Files
+.idea/workspace.xml
+
+# JetBrains IDE Temporary Files
+.idea/tasks.xml
+
 # Swift Package Manager
 Packages/
 Package.pins

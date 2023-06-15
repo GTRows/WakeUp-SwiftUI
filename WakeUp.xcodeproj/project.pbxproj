@@ -73,6 +73,7 @@
 		62B7CC302A2D20E20086F476 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B7CC2F2A2D20E20086F476 /* InitialView.swift */; };
 		62B7CC322A2D21410086F476 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B7CC312A2D21410086F476 /* AuthView.swift */; };
 		62B7CC362A2D2A490086F476 /* SleepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B7CC352A2D2A490086F476 /* SleepViewModel.swift */; };
+		62E6D4432A3BBD5E00BA58C7 /* AwakeDetectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E6D4422A3BBD5E00BA58C7 /* AwakeDetectionService.swift */; };
 		62EF9AD12A3389900057C1CE /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EF9AD02A3389900057C1CE /* NotificationViewModel.swift */; };
 		62F7A59C29E386900005E833 /* WakeUpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F7A59B29E386900005E833 /* WakeUpApp.swift */; };
 		62F7A5A029E386910005E833 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62F7A59F29E386910005E833 /* Assets.xcassets */; };
@@ -142,6 +143,7 @@
 		62B7CC312A2D21410086F476 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		62B7CC352A2D2A490086F476 /* SleepViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepViewModel.swift; sourceTree = "<group>"; };
 		62B83AF829E3944300763E7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		62E6D4422A3BBD5E00BA58C7 /* AwakeDetectionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwakeDetectionService.swift; sourceTree = "<group>"; };
 		62EF9AD02A3389900057C1CE /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
 		62F7A59829E386900005E833 /* WakeUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WakeUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62F7A59B29E386900005E833 /* WakeUpApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakeUpApp.swift; sourceTree = "<group>"; };
@@ -237,11 +239,12 @@
 			children = (
 				62B7CC122A2C03E10086F476 /* HapticsService.swift */,
 				629AD99B2A34F2B70047CEFA /* UserStorageService.swift */,
-				62B7CC1C2A2C12150086F476 /* AlarmService.swift */,
 				62B7CC1E2A2C14880086F476 /* DataBaseService.swift */,
 				62519EBC2A3370D100F14073 /* FireBaseService.swift */,
 				629AD9902A33F2C10047CEFA /* AlertService.swift */,
 				629AD9A12A353C7B0047CEFA /* ImageStorageService.swift */,
+				62B7CC1C2A2C12150086F476 /* AlarmService.swift */,
+				62E6D4422A3BBD5E00BA58C7 /* AwakeDetectionService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -509,6 +512,7 @@
 				62B7CC132A2C03E10086F476 /* HapticsService.swift in Sources */,
 				627344F62A3B583B007F014E /* ProfileViewModel.swift in Sources */,
 				629AD9A22A353C7B0047CEFA /* ImageStorageService.swift in Sources */,
+				62E6D4432A3BBD5E00BA58C7 /* AwakeDetectionService.swift in Sources */,
 				62F7A5B429E387E90005E833 /* AlarmSettingsView.swift in Sources */,
 				627BD8C52A3A23E300FA0418 /* AlarmTaskView.swift in Sources */,
 				62A0E2E02A2E633300891999 /* LocationManager.swift in Sources */,

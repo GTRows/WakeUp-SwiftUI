@@ -53,6 +53,8 @@ final class DatabaseService {
         newAlarm.hour = Int16(alarm.hour)
         newAlarm.minute = Int16(alarm.minute)
         newAlarm.volume = Int16(alarm.volume)
+        newAlarm.tasks = NSArray(array: alarm.tasks)
+        newAlarm.sensors = NSArray(array: alarm.sensors)
         newAlarm.recurringDays = NSArray(array: alarm.recurringDays)
         
         do {
@@ -77,6 +79,9 @@ final class DatabaseService {
                 alarmToBeEdited.hour = Int16(alarm.hour)
                 alarmToBeEdited.minute = Int16(alarm.minute)
                 alarmToBeEdited.volume = Int16(alarm.volume)
+                alarmToBeEdited.tasks = NSArray(array: alarm.tasks)
+                alarmToBeEdited.sensors = NSArray(array: alarm.sensors)
+                
                 alarmToBeEdited.recurringDays = NSArray(array: alarm.recurringDays)
                 
                 do {

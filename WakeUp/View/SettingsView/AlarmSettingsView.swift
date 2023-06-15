@@ -20,6 +20,9 @@ struct AlarmSettingsView: View {
     @ObservedObject var alarmViewModel: AlarmSettingsViewModel
     @ObservedObject var alarm: AlarmModel
 
+    @State private var isShowingSensors = false
+    @State private var isShowingTasks = false
+
     let Music = AudioViewModel()
     var action: AlarmAction
 
@@ -126,38 +129,139 @@ struct AlarmSettingsView: View {
                             ).padding(.vertical, 5)
 
                         // Navigation Tasks
-                        NavigationLink(destination: AlarmTaskView()) {
+                        Button {
+                            isShowingTasks.toggle()
+                        } label: {
                             HStack {
                                 Text("Tasks")
                                     .padding(.leading, 28)
                                 Spacer()
-                                Image(systemName: "chevron.right")
+                                Image(systemName: isShowingTasks ? "chevron.down" : "chevron.right")
                                     .padding(.trailing, 28)
+                            }.frame(height: 50)
+                                .foregroundColor(.white) // temp
+                                .overlay(
+                                    overlayRectangleView
+                                        .frame(width: overlayRectangleWidth)
+                                )
+                                .padding(.vertical, 5)
+                        }
+                        
+                        // Tasks area
+                        if isShowingTasks {
+                            withAnimation {
+                                VStack {
+                                    HStack {
+                                        Text("Mathamatics")
+                                            .padding(.leading, 28)
+                                        Spacer()
+                                        Toggle("", isOn: $alarm.tasks[0])
+                                            .toggleStyle(SwitchToggleStyle(tint: Color("Orange")))
+                                            .onChange(of: vibrateState) { newValue in
+                                                self.vibrateState = newValue
+                                            }
+                                            .padding(.horizontal, 28)
+                                    }.frame(height: 50)
+                                        .overlay(
+                                            overlayRectangleView
+                                                .frame(width: overlayRectangleWidth)
+                                        )
+                                        .padding(.vertical, 5)
+                                    HStack {
+                                        Text("Simon Says")
+                                            .padding(.leading, 28)
+                                        Spacer()
+                                        Toggle("", isOn: $alarm.tasks[1])
+                                            .toggleStyle(SwitchToggleStyle(tint: Color("Orange")))
+                                            .onChange(of: vibrateState) { newValue in
+                                                self.vibrateState = newValue
+                                            }
+                                            .padding(.horizontal, 28)
+                                    }.frame(height: 50)
+                                        .overlay(
+                                            overlayRectangleView
+                                                .frame(width: overlayRectangleWidth)
+                                        )
+                                        .padding(.vertical, 5)
+                                    HStack {
+                                        Text("FaceID")
+                                            .padding(.leading, 28)
+                                        Spacer()
+                                        Toggle("", isOn: $alarm.tasks[2])
+                                            .toggleStyle(SwitchToggleStyle(tint: Color("Orange")))
+                                            .onChange(of: vibrateState) { newValue in
+                                                self.vibrateState = newValue
+                                            }
+                                            .padding(.horizontal, 28)
+                                    }.frame(height: 50)
+                                        .overlay(
+                                            overlayRectangleView
+                                                .frame(width: overlayRectangleWidth)
+                                        )
+                                        .padding(.vertical, 5)
+                                }
                             }
-                        }.frame(height: 50)
-                            .foregroundColor(.white) // temp
-                            .overlay(
-                                overlayRectangleView
-                                    .frame(width: overlayRectangleWidth)
-                            )
-                            .padding(.vertical, 5)
-
-                        // Navigaton Musics
-                        NavigationLink(destination: AlarmTaskView()) {
+                        }
+                        
+                        // Navigation Tasks
+                        Button {
+                            isShowingSensors.toggle()
+                        } label: {
                             HStack {
-                                Text("Sensor Settings")
+                                Text("Sensors")
                                     .padding(.leading, 28)
                                 Spacer()
-                                Image(systemName: "chevron.right")
+                                Image(systemName: isShowingTasks ? "chevron.down" : "chevron.right")
                                     .padding(.trailing, 28)
+                            }.frame(height: 50)
+                                .foregroundColor(.white) // temp
+                                .overlay(
+                                    overlayRectangleView
+                                        .frame(width: overlayRectangleWidth)
+                                )
+                                .padding(.vertical, 5)
+                        }
+
+                        // Sensors area
+                        if isShowingSensors {
+                            withAnimation {
+                                VStack {
+                                    HStack {
+                                        Text("Gyroscope")
+                                            .padding(.leading, 28)
+                                        Spacer()
+                                        Toggle("", isOn: $alarm.sensors[0])
+                                            .toggleStyle(SwitchToggleStyle(tint: Color("Orange")))
+                                            .onChange(of: vibrateState) { newValue in
+                                                self.vibrateState = newValue
+                                            }
+                                            .padding(.horizontal, 28)
+                                    }.frame(height: 50)
+                                        .overlay(
+                                            overlayRectangleView
+                                                .frame(width: overlayRectangleWidth)
+                                        )
+                                        .padding(.vertical, 5)
+                                    HStack {
+                                        Text("Accelerometer")
+                                            .padding(.leading, 28)
+                                        Spacer()
+                                        Toggle("", isOn: $alarm.sensors[1])
+                                            .toggleStyle(SwitchToggleStyle(tint: Color("Orange")))
+                                            .onChange(of: vibrateState) { newValue in
+                                                self.vibrateState = newValue
+                                            }
+                                            .padding(.horizontal, 28)
+                                    }.frame(height: 50)
+                                        .overlay(
+                                            overlayRectangleView
+                                                .frame(width: overlayRectangleWidth)
+                                        )
+                                        .padding(.vertical, 5)
+                                    
+                                }
                             }
-                        }.frame(height: 50)
-                            .foregroundColor(.white)
-                            .foregroundColor(.blue) // temp
-                            .overlay(
-                                overlayRectangleView
-                                    .frame(width: overlayRectangleWidth)
-                            ).padding(.vertical, 5)
+                        }
 
                         // Navigation Sensors
                         NavigationLink(destination: AlarmTaskView()) {
@@ -192,11 +296,11 @@ struct AlarmSettingsView: View {
                                             .frame(width: 40)
                                             .font(.subheadline)
                                             .bold(alarm.recurringDays.contains(Constants.daysOfWeek[index]) ? true : false)
-                                        .foregroundColor(alarm.recurringDays.contains(Constants.daysOfWeek[index]) ? .white : .black)
-                                        .padding(.horizontal, 3)
-                                        .padding(.vertical, 10)
-                                        .background(alarm.recurringDays.contains(Constants.daysOfWeek[index]) ? Color("Orange") : Color.gray)
-                                        .cornerRadius(7)
+                                            .foregroundColor(alarm.recurringDays.contains(Constants.daysOfWeek[index]) ? .white : .black)
+                                            .padding(.horizontal, 3)
+                                            .padding(.vertical, 10)
+                                            .background(alarm.recurringDays.contains(Constants.daysOfWeek[index]) ? Color("Orange") : Color.gray)
+                                            .cornerRadius(7)
                                     }
                                 }
                             }

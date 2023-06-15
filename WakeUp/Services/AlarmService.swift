@@ -15,8 +15,7 @@ struct TimestampAndAlarm {
 }
 
 final class AlarmService {
-    // MARK: - Variables
-
+    private var awakeDetectionService: AwakeDetectionService?
     static let shared = AlarmService()
     @Published var nearestActiveAlarm: AlarmModel?
     private var alarms: [AlarmModel] = [] // alarm listesi
@@ -24,6 +23,16 @@ final class AlarmService {
     private var lastTriggeredAlarm: AlarmModel?
 
     private var packageAlarms: [AlarmModel] = []
+
+    // Add an observer for the isAwake variable
+    private var awakeStateDidChange: ((Bool) -> Void)?
+    var isAwake: Bool = false {
+        didSet {
+            awakeStateDidChange?(isAwake)
+        }
+    }
+
+    private var isAwakeProgressing: Bool = false
 
     // MARK: - Monitoring Alarms
 
@@ -64,6 +73,61 @@ final class AlarmService {
     }
 
     // MARK: - Alarm Actions
+
+    func checkUserAwake(completionHandler: @escaping (_ isAwake: Bool) -> Void) {
+        if isAwakeProgressing {
+            return
+        } else {
+            isAwakeProgressing = true
+        }
+
+        print("checkUserAwake called")
+        guard let nearestActiveAlarm = nearestActiveAlarm else {
+            isAwakeProgressing = false
+            return
+        }
+        if nearestActiveAlarm.isTriggered {
+            isAwakeProgressing = false
+            return
+        }
+
+        if nearestActiveAlarm.sensors == [false, false] {
+            dump(nearestActiveAlarm)
+            isAwake = false
+            print("No sensors selected")
+            isAwakeProgressing = false
+            completionHandler(false)
+            return
+        }
+
+        awakeStateDidChange = { [weak self] isAwake in
+            if isAwake {
+                print("isAwake: \(isAwake)")
+                self?.isAwakeProgressing = false
+                completionHandler(true)
+                self?.awakeStateDidChange = nil // stop observing after awake
+            }
+        }
+        
+        
+        let awakeDetectionService = AwakeDetectionService(sensor: nearestActiveAlarm.sensors)
+
+        // Schedule a check in 60 seconds if user is not awake till then
+        DispatchQueue.main.asyncAfter(deadline: .now() + 60) {
+            self.isAwake = awakeDetectionService.isAwake
+            if self.isAwake == false {
+                print("isAwake: false")
+                self.isAwakeProgressing = false
+                completionHandler(false)
+            } else if self.isAwake == true {
+                print("isAwake: true")
+                self.isAwakeProgressing = false
+                completionHandler(true)
+            }
+
+            self.awakeStateDidChange = nil // remove observer after the check
+        }
+    }
 
     func fireAlarm(alarm: AlarmModel) {
         guard lastTriggeredAlarm != alarm else {

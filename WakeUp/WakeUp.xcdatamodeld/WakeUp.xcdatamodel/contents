@@ -7,6 +7,8 @@
         <attribute name="minute" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="recurringDays" optional="YES" attributeType="Transformable"/>
+        <attribute name="sensors" optional="YES" attributeType="Transformable"/>
+        <attribute name="tasks" optional="YES" attributeType="Transformable"/>
         <attribute name="tone" optional="YES" attributeType="String"/>
         <attribute name="vibrate" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="volume" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
