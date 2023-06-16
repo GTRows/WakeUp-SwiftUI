@@ -85,7 +85,7 @@ struct AlarmListView: View {
                     if !isAddPackage {
                         ForEach(viewModel.alarms, id: \.id) { alarm in
                             SwipeView {
-                                AlarmCellView(alarm: AlarmModel(from: alarm), mod: AlarmCellViewMode.edit)
+                                AlarmCellView(alarm: AlarmModel(from: alarm), mod: AlarmCellViewMod.edit)
                             } leadingActions: { context in
                                 SwipeAction("Create Package") {
                                     AlarmService.shared.clearPackageAlarms()
@@ -131,10 +131,10 @@ struct AlarmListView: View {
                     } else {
                         ForEach(viewModel.alarms, id: \.id) { alarm in
                             if selectedAlarm == alarm {
-                                AlarmCellView(alarm: AlarmModel(from: alarm), mod: AlarmCellViewMode.addPackage, isActiveToggle: true)
+                                AlarmCellView(alarm: AlarmModel(from: alarm), mod: AlarmCellViewMod.addPackage, isActiveToggle: true)
                                     .padding(.horizontal)
                             } else {
-                                AlarmCellView(alarm: AlarmModel(from: alarm), mod: AlarmCellViewMode.addPackage, isActiveToggle: false)
+                                AlarmCellView(alarm: AlarmModel(from: alarm), mod: AlarmCellViewMod.addPackage, isActiveToggle: false)
                                     .padding(.horizontal)
                             }
                         }

@@ -103,12 +103,12 @@ struct CreatePackageView: View {
             .padding()
 
             HStack {
-                Text("Alarms")
+                Text("Vizibility")
                     .font(.headline)
                     .fontWeight(.bold)
                     .padding(.leading, 16)
                 Spacer()
-                Toggle(isOn: $viewModel.visibility) {}
+                Toggle(isOn: $viewModel.vizibility) {}
                     .toggleStyle(SwitchToggleStyle(tint: Color("Orange")))
                     .padding(.horizontal, 10)
                     .padding(.vertical, 5)

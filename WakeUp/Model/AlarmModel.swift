@@ -26,7 +26,25 @@ extension AlarmModel: Equatable {
     }
 }
 
-class AlarmModel: ObservableObject {
+class AlarmModel: ObservableObject, ShareAbleCellProtocol {
+    func getCellView() -> any View {
+        AlarmCellView(alarm: self, mod: .show)
+    }
+    
+    func getNameModel() -> String {
+        return "Alarm"
+    }
+    
+    func share(emailToShare: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        FireBaseService.shared.shareAlarm(self, withEmail: emailToShare) { error in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.success(()))
+            }
+        }
+    }
+    
     @Published var id: UUID
     @Published var name: String
     @Published var active: AlarmActiveState

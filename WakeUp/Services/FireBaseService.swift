@@ -172,7 +172,7 @@ class FireBaseService {
 
     func shareAlarm(_ alarm: AlarmModel, withEmail email: String, completion: @escaping (Error?) -> Void) {
         let alarmData: [String: Any] = [
-            "sender": "sender@example.com",
+            "sender": getUser().email,
             "recipient": email,
             "alarm": alarm.toDict(),
         ]
@@ -181,6 +181,19 @@ class FireBaseService {
             completion(error)
         }
     }
+    
+    func sharePackage(_ package: PackageModel, withEmail email: String, completion: @escaping (Error?) -> Void) {
+        let packageData: [String: Any] = [
+            "sender": getUser().email,
+            "recipient": email,
+            "package": package.toDict(),
+        ]
+
+        db.collection("sharedPackages").document(package.id.uuidString).setData(packageData) { error in
+            completion(error)
+        }
+    }
+
 
     func fetchSharedAlarms(forEmail email: String, completion: @escaping ([AlarmModel]?, Error?) -> Void) {
         db.collection("sharedAlarms").whereField("recipient", isEqualTo: email)
@@ -282,7 +295,7 @@ class FireBaseService {
     }
 
     func fetchAllPackages(completion: @escaping (Result<[PackageModel], Error>) -> Void) {
-        db.collection("Packages").getDocuments { querySnapshot, err in
+        db.collection("Packages").whereField("vizibility", isEqualTo: true).getDocuments { querySnapshot, err in
             if let err = err {
                 completion(.failure(err))
             } else {

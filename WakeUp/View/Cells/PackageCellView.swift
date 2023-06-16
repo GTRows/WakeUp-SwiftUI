@@ -9,13 +9,37 @@ import Shimmer
 import SwiftUI
 import UIKit
 
+enum PackageCellViewMod {
+    case workspace
+    case show
+
+    var boolValue: Bool {
+        switch self {
+        case .workspace:
+            return false
+        case .show:
+            return true
+        }
+    }
+}
+
+
+
 struct PackageCellView: View {
     @StateObject var alertService = AlertService.shared
     @ObservedObject var viewModel: PackageViewModel
     @State var isExpendad: Bool = false
     @State var cellHeightDefault: Int = 400
     @State var cellHeight: Int = 400
+    @State var mod: PackageCellViewMod
+    
+    
 
+    init(package: PackageModel, mod: PackageCellViewMod = .workspace) {
+        self.viewModel = PackageViewModel(package: package)
+        self.mod = mod
+    }
+    
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 20)
@@ -90,14 +114,14 @@ struct PackageCellView: View {
                     if viewModel.package.alarms.count > 1 {
                         ScrollView {
                             ForEach(viewModel.package.alarms, id: \.id) { alarm in
-                                AlarmCellView(alarm: alarm, mod: AlarmCellViewMode.edit)
+                                AlarmCellView(alarm: alarm, mod: AlarmCellViewMod.edit)
                                     .frame(width: UIScreen.main.bounds.width - 60)
                                     .padding(.horizontal, 20)
                             }
                         }
                         .frame(height: 200)
                     } else {
-                        AlarmCellView(alarm: viewModel.package.alarms[0], mod: AlarmCellViewMode.edit)
+                        AlarmCellView(alarm: viewModel.package.alarms[0], mod: AlarmCellViewMod.edit)
                             .frame(width: UIScreen.main.bounds.width - 60)
                             .padding(.horizontal, 20)
                     }
@@ -120,7 +144,8 @@ struct PackageCellView: View {
                                     .stroke(Color("Orange"), lineWidth: 1)
                             )
                             .frame(width: UIScreen.main.bounds.width - 40)
-                    }.padding(.vertical, 10)
+                    }.disabled(self.mod.boolValue)
+                    .padding(.vertical, 10)
                 }
 
                 Button {
@@ -151,6 +176,6 @@ struct PackageCellView: View {
 
 struct PackageCellView_Previews: PreviewProvider {
     static var previews: some View {
-        PackageCellView(viewModel: PackageViewModel(package: Constants.tempPackages[0]))
+        PackageCellView(package: Constants.tempPackages[0])
     }
 }

@@ -25,7 +25,7 @@ struct NotificationView: View {
                 ScrollView {
                     ForEach(viewModel.alarms, id: \.id) { alarm in
                         SwipeView {
-                            AlarmCellView(alarm: alarm, mod: AlarmCellViewMode.notification)
+                            AlarmCellView(alarm: alarm, mod: AlarmCellViewMod.notification)
                         } trailingActions: { context in
                             SwipeAction(systemImage: "trash",
                                         backgroundColor: .red) {

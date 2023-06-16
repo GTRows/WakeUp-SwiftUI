@@ -74,6 +74,8 @@
 		62B7CC322A2D21410086F476 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B7CC312A2D21410086F476 /* AuthView.swift */; };
 		62B7CC362A2D2A490086F476 /* SleepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B7CC352A2D2A490086F476 /* SleepViewModel.swift */; };
 		62E6D4432A3BBD5E00BA58C7 /* AwakeDetectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E6D4422A3BBD5E00BA58C7 /* AwakeDetectionService.swift */; };
+		62E6D4452A3BDCAE00BA58C7 /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E6D4442A3BDCAE00BA58C7 /* ShareView.swift */; };
+		62E6D4482A3BDD6400BA58C7 /* ShareAbleCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E6D4472A3BDD6400BA58C7 /* ShareAbleCellProtocol.swift */; };
 		62EF9AD12A3389900057C1CE /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EF9AD02A3389900057C1CE /* NotificationViewModel.swift */; };
 		62F7A59C29E386900005E833 /* WakeUpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F7A59B29E386900005E833 /* WakeUpApp.swift */; };
 		62F7A5A029E386910005E833 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62F7A59F29E386910005E833 /* Assets.xcassets */; };
@@ -144,6 +146,8 @@
 		62B7CC352A2D2A490086F476 /* SleepViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepViewModel.swift; sourceTree = "<group>"; };
 		62B83AF829E3944300763E7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62E6D4422A3BBD5E00BA58C7 /* AwakeDetectionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwakeDetectionService.swift; sourceTree = "<group>"; };
+		62E6D4442A3BDCAE00BA58C7 /* ShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
+		62E6D4472A3BDD6400BA58C7 /* ShareAbleCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareAbleCellProtocol.swift; sourceTree = "<group>"; };
 		62EF9AD02A3389900057C1CE /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
 		62F7A59829E386900005E833 /* WakeUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WakeUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62F7A59B29E386900005E833 /* WakeUpApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakeUpApp.swift; sourceTree = "<group>"; };
@@ -282,6 +286,14 @@
 			path = AuthView;
 			sourceTree = "<group>";
 		};
+		62E6D4462A3BDD4500BA58C7 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				62E6D4472A3BDD6400BA58C7 /* ShareAbleCellProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		62F7A58F29E386900005E833 = {
 			isa = PBXGroup;
 			children = (
@@ -320,6 +332,7 @@
 		62F7A5AE29E387030005E833 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				62E6D4462A3BDD4500BA58C7 /* Protocol */,
 				6254C0BE29E58C06002D774F /* AlarmModel.swift */,
 				62B7CC232A2C24930086F476 /* MusicModel.swift */,
 				62A0E2E42A2EB6AB00891999 /* UserModel.swift */,
@@ -341,6 +354,7 @@
 				62519EB72A335FA200F14073 /* WorkShopView.swift */,
 				629DDDF729E4DF0D00186056 /* AlarmListView.swift */,
 				62B7CC1A2A2C11880086F476 /* SleepView.swift */,
+				62E6D4442A3BDCAE00BA58C7 /* ShareView.swift */,
 				62A0E2DB2A2E5D6200891999 /* SettingsView */,
 				62B7CC202A2C206F0086F476 /* Cells */,
 			);
@@ -466,6 +480,7 @@
 				62F7A5B229E387DF0005E833 /* HomeView.swift in Sources */,
 				629DDDF829E4DF0D00186056 /* AlarmListView.swift in Sources */,
 				62F7A5A529E386910005E833 /* Persistence.swift in Sources */,
+				62E6D4452A3BDCAE00BA58C7 /* ShareView.swift in Sources */,
 				62B7CC1F2A2C14880086F476 /* DataBaseService.swift in Sources */,
 				62B7CC182A2C07250086F476 /* Constants.swift in Sources */,
 				6227599C2A131D7F0030F004 /* AlarmListViewModel.swift in Sources */,
@@ -481,6 +496,7 @@
 				62A0E2E32A2E69B900891999 /* AlarmMapView.swift in Sources */,
 				629DDE2929E5796F00186056 /* AlarmCellView.swift in Sources */,
 				629AD9912A33F2C10047CEFA /* AlertService.swift in Sources */,
+				62E6D4482A3BDD6400BA58C7 /* ShareAbleCellProtocol.swift in Sources */,
 				629AD99C2A34F2B70047CEFA /* UserStorageService.swift in Sources */,
 				62B7CC302A2D20E20086F476 /* InitialView.swift in Sources */,
 				62519EBD2A3370D100F14073 /* FireBaseService.swift in Sources */,

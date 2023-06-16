@@ -18,6 +18,10 @@ class PackageViewModel: ObservableObject {
     }
 
     private func fetchImage() {
+        if image != nil {
+            return
+        }
+
         FireBaseService.shared.fetchImage(from: package.image) { image in
             DispatchQueue.main.async {
                 self.image = image

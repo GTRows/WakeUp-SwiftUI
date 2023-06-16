@@ -10,7 +10,7 @@ import UIKit
 
 class CreatePackageViewModel: ObservableObject {
     @Published var name: String = ""
-    @Published var visibility: Bool = false
+    @Published var vizibility: Bool = false
     @Published var image: UIImage? = nil
     @Published var description : String = ""
     var selectedAlarms: [AlarmModel] = []
@@ -28,7 +28,7 @@ class CreatePackageViewModel: ObservableObject {
             switch result {
             case .success(let imageUrl):
                 // Image upload successful, create the package
-                let package = PackageModel(id: UUID(), name: self.name, image: imageUrl, description: self.description, visibility: self.visibility, Creator: FireBaseService.shared.getUser(), alarms: AlarmService.shared.getPackageAlarms())
+                let package = PackageModel(id: UUID(), name: self.name, image: imageUrl, description: self.description, vizibility: self.vizibility, Creator: FireBaseService.shared.getUser(), alarms: AlarmService.shared.getPackageAlarms())
                 FireBaseService.shared.addPackage(package: package) { result in
                     switch result {
                     case .success:

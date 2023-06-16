@@ -7,10 +7,11 @@
 
 import SwiftUI
 
-enum AlarmCellViewMode {
+enum AlarmCellViewMod {
     case edit
     case notification
     case addPackage
+    case show
 }
 
 struct AlarmCellView: View {
@@ -24,7 +25,7 @@ struct AlarmCellView: View {
     let cellHeight: CGFloat = 135
     let cellCornerRadius: CGFloat = 16
 
-    @State var mod: AlarmCellViewMode
+    @State var mod: AlarmCellViewMod
     var isActiveToggle: Bool?
 
     var body: some View {
@@ -87,7 +88,17 @@ struct AlarmCellView: View {
                         .toggleStyle(CheckboxToggleStyle())
                         .padding(.trailing, 50)
 
-                    } else {
+                    } else if mod == .show {
+                        Toggle("", isOn: $isOn)
+                            .disabled(true)
+                            .toggleStyle(SwitchToggleStyle(tint: Color("Orange")))
+                            .padding(.trailing, 50)
+                            .onChange(of: isOn) { newValue in
+                                alarm.active = newValue ? .active : .inactive
+                                let viewModel = AlarmSettingsViewModel(alarm: alarm)
+                                viewModel.editAlarm()
+                            }
+                    }else {
                         Text("Unknown")
                             .task {
                                 AlertService.shared.showString(title: "Unknown Error", message: "AlarmCellView mod undefined")
@@ -185,8 +196,8 @@ struct AlarmCellView_Previews: PreviewProvider {
     @State var addAlarmButton: Bool = false
 
     static var previews: some View {
-//        AlarmCellView(alarm: AlarmModel(), mod: AlarmCellViewMode.notification) // notification
-//        AlarmCellView(alarm: AlarmModel(), mod: AlarmCellViewMode.edit) // notification
-        AlarmCellView(alarm: AlarmModel(), mod: AlarmCellViewMode.addPackage, isActiveToggle: true) // notification
+//        AlarmCellView(alarm: AlarmModel(), mod: AlarmCellViewMod.notification) // notification
+//        AlarmCellView(alarm: AlarmModel(), mod: AlarmCellViewMod.edit) // notification
+        AlarmCellView(alarm: AlarmModel(), mod: AlarmCellViewMod.addPackage, isActiveToggle: true) // notification
     }
 }

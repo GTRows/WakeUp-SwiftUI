@@ -71,7 +71,7 @@ struct HomeView: View {
 
                     // Nearest Alarm cell view
                     if viewModel.isHaveAlarm {
-                        AlarmCellView(alarm: viewModel.nearestActiveAlarm, mod: AlarmCellViewMode.edit)
+                        AlarmCellView(alarm: viewModel.nearestActiveAlarm, mod: AlarmCellViewMod.edit)
                             .padding(.horizontal)
                             .frame(width: cellWidth, height: cellHeight)
                             .padding(.vertical, 10)

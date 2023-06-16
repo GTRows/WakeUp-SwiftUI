@@ -18,13 +18,13 @@ final class AlarmService {
     private var awakeDetectionService: AwakeDetectionService?
     static let shared = AlarmService()
     @Published var nearestActiveAlarm: AlarmModel?
-    private var alarms: [AlarmModel] = [] // alarm listesi
+
+    private var alarms: [AlarmModel] = []
     private var timer: Timer?
     private var lastTriggeredAlarm: AlarmModel?
-
     private var packageAlarms: [AlarmModel] = []
 
-    // Add an observer for the isAwake variable
+    @Published var sleepViewModelSensorText: String = ""
     private var awakeStateDidChange: ((Bool) -> Void)?
     var isAwake: Bool = false {
         didSet {
@@ -81,7 +81,6 @@ final class AlarmService {
             isAwakeProgressing = true
         }
 
-        print("checkUserAwake called")
         guard let nearestActiveAlarm = nearestActiveAlarm else {
             isAwakeProgressing = false
             return
@@ -94,7 +93,6 @@ final class AlarmService {
         if nearestActiveAlarm.sensors == [false, false] {
             dump(nearestActiveAlarm)
             isAwake = false
-            print("No sensors selected")
             isAwakeProgressing = false
             completionHandler(false)
             return
@@ -102,25 +100,31 @@ final class AlarmService {
 
         awakeStateDidChange = { [weak self] isAwake in
             if isAwake {
-                print("isAwake: \(isAwake)")
                 self?.isAwakeProgressing = false
                 completionHandler(true)
                 self?.awakeStateDidChange = nil // stop observing after awake
             }
         }
-        
-        
+
         let awakeDetectionService = AwakeDetectionService(sensor: nearestActiveAlarm.sensors)
+
+        if nearestActiveAlarm.sensors == [true, true] {
+            sleepViewModelSensorText = "Gyroscope and Accelerometer Scanning"
+        } else if nearestActiveAlarm.sensors[0] == true {
+            sleepViewModelSensorText = "Gyroscope Scanning"
+        } else {
+            sleepViewModelSensorText = "Accelerometer Scanning"
+        }
 
         // Schedule a check in 60 seconds if user is not awake till then
         DispatchQueue.main.asyncAfter(deadline: .now() + 60) {
             self.isAwake = awakeDetectionService.isAwake
             if self.isAwake == false {
-                print("isAwake: false")
+                self.sleepViewModelSensorText = ""
                 self.isAwakeProgressing = false
                 completionHandler(false)
             } else if self.isAwake == true {
-                print("isAwake: true")
+                self.sleepViewModelSensorText = ""
                 self.isAwakeProgressing = false
                 completionHandler(true)
             }

@@ -75,10 +75,12 @@ struct SleepView: View {
                             .frame(maxWidth: 400)
                     }
                 }
-            }
+            }.padding(.top, 20)
+                .padding(.bottom)
+            Text(AlarmService.shared.sleepViewModelSensorText)
+                .padding()
             Spacer()
         }.onAppear(){
-            
             viewModel.checkAlarm()
         }
     }
