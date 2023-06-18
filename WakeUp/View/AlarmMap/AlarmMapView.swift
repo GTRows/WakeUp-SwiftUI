@@ -8,35 +8,36 @@
 import SwiftUI
 
 struct AlarmMapView: View {
-    @ObservedObject var viewModel = MapViewModel()
+//    @ObservedObject var viewModel = MapViewModel()
 
     var body: some View {
         VStack {
-            ZStack {
-                MapView(isCircleOnMap: $viewModel.isCircleOnMap, circleRadius: $viewModel.circleRadius)
-                    .edgesIgnoringSafeArea(.all)
-                VStack {
-                    HStack {
-                        Spacer()
-                        Button(action: {
-                            viewModel.isCircleOnMap.toggle()
-                        }) {
-                            Text(viewModel.isCircleOnMap ? "Delete Circle" : "Add Circle")
-                                .foregroundColor(.white)
-                                .padding()
-                                .background(Color.red)
-                                .cornerRadius(10)
-                        }
-                        .padding()
-                    }
-                    Spacer()
-                }
-            }
-
-            Text("Circle Radius: \(Int(viewModel.circleRadius))")
-            Slider(value: $viewModel.circleRadius, in: 100 ... 5000, step: 100)
-                .padding()
-                .padding(.bottom, 100)
+            Text("Hello, World!")
+//            ZStack {
+////                MapView(isCircleOnMap: $viewModel.isCircleOnMap, circleRadius: $viewModel.circleRadius, centerCoordinate: $viewModel.circleCenter )
+////                    .edgesIgnoringSafeArea(.all)
+//                VStack {
+//                    HStack {
+//                        Spacer()
+//                        Button(action: {
+////                            viewModel.isCircleOnMap.toggle()
+//                        }) {
+//                            Text(viewModel.isCircleOnMap ? "Delete Circle" : "Add Circle")
+//                                .foregroundColor(.white)
+//                                .padding()
+//                                .background(Color.red)
+//                                .cornerRadius(10)
+//                        }
+//                        .padding()
+//                    }
+//                    Spacer()
+//                }
+//            }
+//
+//            Text("Circle Radius: \(Int(viewModel.circleRadius))")
+//            Slider(value: $viewModel.circleRadius, in: 100 ... 5000, step: 100)
+//                .padding()
+//                .padding(.bottom, 100)
         }
     }
 }

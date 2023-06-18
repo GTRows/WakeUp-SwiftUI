@@ -24,7 +24,7 @@ struct ControlView: View {
             case 0:
                 HomeView()
             case 1:
-                AlarmMapView()
+                MapView(viewModel: MapViewModel())
             case 2:
                 SleepView()
             case 3:
