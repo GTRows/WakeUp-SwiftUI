@@ -9,12 +9,32 @@ import CoreLocation
 import MapKit
 import SwiftUI
 
+enum CircleMode {
+    case addCircle
+    case setCircle
+    case deleteCircle
+}
+
 class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var circleRadius: CGFloat = 100.0
     private let locationManager = CLLocationManager()
     @Published var region: MKCoordinateRegion
     @Published var circleExists: Bool = false
     @Published var initialLoad = true
+
+    @Published var buttonTitle: String = "Add Circle"
+    @Published var circleMod: CircleMode = .addCircle {
+        didSet {
+            switch circleMod {
+            case .addCircle:
+                buttonTitle = "Add Circle"
+            case .setCircle:
+                buttonTitle = "Set Circle"
+            case .deleteCircle:
+                buttonTitle = "Delete Circle"
+            }
+        }
+    }
 
     override init() {
         // Define initial region
@@ -27,10 +47,13 @@ class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
 
     func drawCircleAtCenter() {
         circleExists = true
+        circleMod = .setCircle
     }
 
     func deleteCircle() {
         circleExists = false
+        circleRadius = 100.0
+        circleMod = .addCircle
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -44,9 +67,22 @@ class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
             }
         }
 
+        if circleMod != CircleMode.deleteCircle {
+            return
+        }
+
         // If the user is inside the circle
+        // If the user is inside the circle
+        let circleCenter = CLLocation(latitude: region.center.latitude, longitude: region.center.longitude)
+        let userLocation = CLLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        let distance = userLocation.distance(from: circleCenter)
+        print("Circle radius: \(circleRadius)")
+        print("Circle Center: \(circleCenter)")
+        print("User Location: \(userLocation)")
+        print("Distance: \(distance)")
+        print("gg")
         if circleExists && location.distance(from: CLLocation(latitude: region.center.latitude, longitude: region.center.longitude)) <= Double(circleRadius) {
-            AlarmService.shared.fireAlarm(alarm: AlarmModel())
+                    AlarmService.shared.fireAlarm(alarm: AlarmModel())
             deleteCircle()
         }
     }
