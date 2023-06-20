@@ -26,7 +26,7 @@ struct MapView: View {
                         .frame(width: viewModel.circleRadius * 2, height: viewModel.circleRadius * 2)
                         .opacity(viewModel.circleExists ? 1 : 0)
                 )
-
+            
             VStack {
                 Spacer()
                 if viewModel.circleMod == .setCircle {

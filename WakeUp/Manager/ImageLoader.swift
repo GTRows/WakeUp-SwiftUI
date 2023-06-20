@@ -14,6 +14,7 @@ class ImageLoader: ObservableObject {
 
     private var cancellable: AnyCancellable?
     
+    
     func load(url: String) {
         guard let imageURL = URL(string: url) else { return }
         

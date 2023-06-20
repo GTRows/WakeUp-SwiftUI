@@ -60,27 +60,27 @@ struct Constants {
         MusicModel(id: UUID(), name: "Rammstein", category: .recommended, duration: 180, coverName: "RammsteinCover", isPlaying: false, isLooping: false),
     ]
 
-    // Temp Articles
     static let tempArticles = [
-        // Örnek verilerin oluşturulması
         ArticlesModel(id: UUID(),
-                      title: "Unplug before bed",
-                      description: "Unplugging from smartphones and laptops about 30 minutes before bed can contribute to a better night of sleep.",
-                      image: "Article1",
-                      url: "https://example.com/article1"),
-
+                      title: "Uyku ve Sağlık",
+                      description: "Uyku, genel sağlık ve yaşam kalitesi üzerinde büyük bir etkiye sahiptir.",
+                      image: "https://sehercakmak.com/images/blog/tt_637995245828057458_b.webp",
+                      url: "https://sehercakmak.com/blog/uyku-ve-ruh-sagligi"),
         ArticlesModel(id: UUID(),
-                      title: "The Benefits of Meditation",
-                      description: "Meditation has been shown to reduce stress, improve focus, and promote emotional well-being.",
-                      image: "Article2",
-                      url: "https://example.com/article2"),
-
+                      title: "Uyku Hijyen",
+                      description: "Etkili uyku hijyen pratikleri, daha iyi bir gece uykusu almanıza yardımcı olabilir.",
+                      image: "https://npistanbul.com/panel/images/saglik_islemleri/1/tr/1676895230.jpg",
+                      url: "https://npistanbul.com/uyku-hijyeni-nedir"),
         ArticlesModel(id: UUID(),
-                      title: "Healthy Eating Habits",
-                      description: "Eating a balanced diet rich in fruits, vegetables, and whole grains is essential for maintaining good health.",
-                      image: "Article3",
-                      url: "https://example.com/article3"),
-        ArticlesModel(id: UUID(), title: "The 7 Best Sleep Apps of 2021", description: "The 7 Best Sleep Apps of 2021", image: "Article4", url: "https://www.healthline.com/health/healthy-sleep/best-sleep-apps"),
+                      title: "Uyandırma Rutinleri",
+                      description: "Etkili uyandırma rutinleri, gün boyunca enerjik ve odaklanmış hissetmenizi sağlar.",
+                      image: "https://www.innerjoy.app/wp-content/uploads/2022/05/Ordinary-day-bro-1536x1536.png",
+                      url: "https://www.innerjoy.app/gun-icerisinde-daha-verimli-hissetmenin-bir-yolu-sabah-rutini/"),
+        ArticlesModel(id: UUID(),
+                      title: "Uyku ve Beslenme",
+                      description: "Beslenme, uyku kalitesini ve süresini önemli ölçüde etkileyebilir.",
+                      image: "https://www.ucarecdn.com/411621cf-6bdc-40a1-ac3a-224a825b0d7f/",
+                      url: "https://www.doktortakvimi.com/blog/uyku-kalitesi-ve-beslenme2")
     ]
 
     func getRandomGreeting() -> String {

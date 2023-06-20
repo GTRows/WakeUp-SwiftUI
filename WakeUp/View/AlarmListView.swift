@@ -87,7 +87,7 @@ struct AlarmListView: View {
                             SwipeView {
                                 AlarmCellView(alarm: AlarmModel(from: alarm), mod: AlarmCellViewMod.edit)
                             } leadingActions: { context in
-                                SwipeAction("Create Package") {
+                                SwipeAction("Create\nPackage") {
                                     AlarmService.shared.clearPackageAlarms()
                                     self.selectedAlarm = alarm
                                     AlarmService.shared.addPackageAlarms(alarm: AlarmModel(from: alarm))
