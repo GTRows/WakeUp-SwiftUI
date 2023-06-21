@@ -16,7 +16,7 @@ struct AlarmSettingsView: View {
     @State private var volumeLevel: Float = 0.5
     @State private var vibrateState = true
     @State private var previewState = false
-
+    @State private var tone: String?
     @ObservedObject var alarmViewModel: AlarmSettingsViewModel
     @ObservedObject var alarm: AlarmModel
 
@@ -128,82 +128,7 @@ struct AlarmSettingsView: View {
 
                             ).padding(.vertical, 5)
 
-                        // Navigation Tasks
-                        Button {
-                            isShowingTasks.toggle()
-                        } label: {
-                            HStack {
-                                Text("Tasks")
-                                    .padding(.leading, 28)
-                                Spacer()
-                                Image(systemName: isShowingTasks ? "chevron.down" : "chevron.right")
-                                    .padding(.trailing, 28)
-                            }.frame(height: 50)
-                                .foregroundColor(.white) // temp
-                                .overlay(
-                                    overlayRectangleView
-                                        .frame(width: overlayRectangleWidth)
-                                )
-                                .padding(.vertical, 5)
-                        }
-                        
-                        // Tasks area
-                        if isShowingTasks {
-                            withAnimation {
-                                VStack {
-                                    HStack {
-                                        Text("Mathamatics")
-                                            .padding(.leading, 28)
-                                        Spacer()
-                                        Toggle("", isOn: $alarm.tasks[0])
-                                            .toggleStyle(SwitchToggleStyle(tint: Color("Orange")))
-                                            .onChange(of: vibrateState) { newValue in
-                                                self.vibrateState = newValue
-                                            }
-                                            .padding(.horizontal, 28)
-                                    }.frame(height: 50)
-                                        .overlay(
-                                            overlayRectangleView
-                                                .frame(width: overlayRectangleWidth)
-                                        )
-                                        .padding(.vertical, 5)
-                                    HStack {
-                                        Text("Simon Says")
-                                            .padding(.leading, 28)
-                                        Spacer()
-                                        Toggle("", isOn: $alarm.tasks[1])
-                                            .toggleStyle(SwitchToggleStyle(tint: Color("Orange")))
-                                            .onChange(of: vibrateState) { newValue in
-                                                self.vibrateState = newValue
-                                            }
-                                            .padding(.horizontal, 28)
-                                    }.frame(height: 50)
-                                        .overlay(
-                                            overlayRectangleView
-                                                .frame(width: overlayRectangleWidth)
-                                        )
-                                        .padding(.vertical, 5)
-                                    HStack {
-                                        Text("FaceID")
-                                            .padding(.leading, 28)
-                                        Spacer()
-                                        Toggle("", isOn: $alarm.tasks[2])
-                                            .toggleStyle(SwitchToggleStyle(tint: Color("Orange")))
-                                            .onChange(of: vibrateState) { newValue in
-                                                self.vibrateState = newValue
-                                            }
-                                            .padding(.horizontal, 28)
-                                    }.frame(height: 50)
-                                        .overlay(
-                                            overlayRectangleView
-                                                .frame(width: overlayRectangleWidth)
-                                        )
-                                        .padding(.vertical, 5)
-                                }
-                            }
-                        }
-                        
-                        // Navigation Tasks
+                        // Navigation sensors
                         Button {
                             isShowingSensors.toggle()
                         } label: {
@@ -211,7 +136,7 @@ struct AlarmSettingsView: View {
                                 Text("Sensors")
                                     .padding(.leading, 28)
                                 Spacer()
-                                Image(systemName: isShowingTasks ? "chevron.down" : "chevron.right")
+                                Image(systemName: isShowingSensors ? "chevron.down" : "chevron.right")
                                     .padding(.trailing, 28)
                             }.frame(height: 50)
                                 .foregroundColor(.white) // temp
@@ -258,13 +183,12 @@ struct AlarmSettingsView: View {
                                                 .frame(width: overlayRectangleWidth)
                                         )
                                         .padding(.vertical, 5)
-                                    
                                 }
                             }
                         }
 
                         // Navigation Sensors
-                        NavigationLink(destination: AlarmTaskView()) {
+                        NavigationLink(destination: AlarmMusicSelectionView(selectedMusic: $tone)) {
                             HStack {
                                 Text("Alarm Music")
                                     .padding(.leading, 28)
@@ -317,13 +241,15 @@ struct AlarmSettingsView: View {
                 VStack {
                     // Buttons
                     Button(action: {
-                        if !self.Music.isPlaying && !self.previewState {
+                        if self.tone == nil {
+                            AlertService.shared.showString(title: "Error", message: "Please select a tone")
+                        } else if !self.Music.isPlaying && !self.previewState {
                             self.previewState = true
                             if self.vibrateState {
                                 HapticsService.shared.startHaptics()
                             }
                             MPVolumeView.setVolume(Float(volumeLevel))
-                            self.Music.playSound(sound: "NewMorningAlarm", type: "mp3")
+                            self.Music.playSound(sound: self.tone!, type: "caf")
                             //                            previewAlarm()
                             alarmViewModel.previewAlarm()
 
@@ -337,7 +263,10 @@ struct AlarmSettingsView: View {
                             .foregroundColor(Color("Orange"))
                     }
                     Button(action: {
-                        alarmViewModel.setAlarm(volumeLevel: volumeLevel, action: action, wakeUpTime: wakeUpTime)
+                        if self.tone == nil || self.tone == ""{
+                            self.tone = "NewMorningAlarm"
+                        }
+                        alarmViewModel.setAlarm(volumeLevel: volumeLevel, action: action, tone: tone!, wakeUpTime: wakeUpTime)
                         presentationMode.wrappedValue.dismiss()
                     }) {
                         ContainerRelativeShape()

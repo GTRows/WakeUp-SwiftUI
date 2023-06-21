@@ -78,7 +78,7 @@ struct SleepView: View {
                     } else{
                         ForEach(viewModel.musics, id: \.id) { item in
                             WebView(videoID: item.key)
-                                .frame(width: 350, height: 200)
+                                .frame(width: 300, height: 200)
                                 .padding(.top,15)
                                 .padding(.horizontal, 10)
                         }

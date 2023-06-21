@@ -22,6 +22,7 @@ class HapticsService {
     func prepareHaptics() {
         guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else {
             print("Haptics not supported on this device.")
+            AlertService.shared.showString(title: "Error", message: "Haptics not supported on this device.")
             return
         }
         
@@ -30,12 +31,14 @@ class HapticsService {
             self.hapticEngine = engine
         } catch {
             print("There was an error creating the engine: \(error.localizedDescription)")
+            AlertService.shared.showString(title: "Error", message: "There was an error creating the engine: \(error.localizedDescription)")
         }
     }
     
     public func startHaptics() {
         guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else {
             print("Haptics not supported on this device.")
+            AlertService.shared.showString(title: "Error", message: "Haptics not supported on this device.")
             return
         }
 
@@ -53,10 +56,16 @@ class HapticsService {
 
             // To repeat the pattern indefinitely
             timer = Timer.scheduledTimer(withTimeInterval: 8.0, repeats: true) { timer in
-                try? self.hapticPlayer?.start(atTime: CHHapticTimeImmediate)
+                do {
+                    try self.hapticPlayer?.start(atTime: CHHapticTimeImmediate)
+                } catch let error {
+                    print("Haptic player start error: \(error)")
+                    AlertService.shared.show(error: error)
+                }
             }
         } catch let error {
             print("Haptic engine Error: \(error)")
+            AlertService.shared.show(error: error)
         }
     }
     

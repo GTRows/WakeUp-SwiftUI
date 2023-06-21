@@ -8,6 +8,9 @@
 import Foundation
 import SwiftUI
 import UIKit
+import UserNotifications
+import AVFoundation
+import CoreHaptics
 
 struct TimestampAndAlarm {
     let timestamp: Double
@@ -91,7 +94,7 @@ final class AlarmService {
         }
 
         if nearestActiveAlarm.sensors == [false, false] {
-            dump(nearestActiveAlarm)
+//            dump(nearestActiveAlarm)
             isAwake = false
             isAwakeProgressing = false
             completionHandler(false)
@@ -138,18 +141,71 @@ final class AlarmService {
             return
         }
         lastTriggeredAlarm = alarm
+        
+        let center = UNUserNotificationCenter.current()
+
+        center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+            if granted {
+                print("Yay! We have the permission to send push notifications!")
+            } else {
+                print("D'oh")
+            }
+        }
+        
+        let content = UNMutableNotificationContent()
+        content.title = "Wake up!"
+        content.body = "It's time to wake up."
+//        content.sound = UNNotificationSound(named: UNNotificationSoundName(alarm.tone))
+        content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "TimeToWakeUp.caf"))
+
+        if alarm.vibrate == .on {
+            content.sound = UNNotificationSound.defaultCriticalSound(withAudioVolume: 1.0)
+        }
+        
+        
+        //
+        let audio = AudioViewModel()
+        audio.setVolumeLeve(volume: Float(alarm.volume) / 100)
+        audio.playSound(sound: alarm.tone, type: "caf")
+        
+        let haptic = HapticsService.shared
+        haptic.startHaptics()
+        
         let alert = UIAlertController(title: "Wake up!", message: "It's time to wake up.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+            audio.stopSound()
+            haptic.stopHaptics()
             if alarm.recurringDays.isEmpty {
                 let updatedAlarm = alarm
                 updatedAlarm.active = .inactive
                 DatabaseService.shared.editAlarm(alarm: updatedAlarm)
             }
+            
         }))
+        
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
            let window = windowScene.windows.first,
            let rootViewController = window.rootViewController {
             rootViewController.present(alert, animated: true)
+            
+        }
+        
+        //
+        
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+        let request = UNNotificationRequest(identifier: "alarm", content: content, trigger: trigger)
+        let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.add(request) { (error) in
+            if let error = error {
+                print("Error: \(error)")
+            }
+        }
+        
+        if alarm.recurringDays.isEmpty {
+            var updatedAlarm = alarm
+            updatedAlarm.active = .inactive
+            DatabaseService.shared.editAlarm(alarm: updatedAlarm)
         }
     }
 

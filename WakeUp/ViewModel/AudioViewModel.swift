@@ -7,10 +7,15 @@
 
 import Foundation
 import AVKit
+import MediaPlayer
 
 class AudioViewModel: ObservableObject {
     @Published var player: AVAudioPlayer!
     @Published var isPlaying = false
+    
+    func setVolumeLeve(volume: Float) {
+        MPVolumeView.setVolume(volume)
+    }
     
     func playSound(sound: String, type: String) {
         if let path = Bundle.main.path(forResource: sound, ofType: type) {

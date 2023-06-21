@@ -49,7 +49,6 @@ struct PackageCellView: View {
                 .onChange(of: cellHeight, perform: { newValue in
                     print("cellHeight: \(newValue)")
                     print("viewModel.package.alarms.count: \(viewModel.package.alarms.count)")
-                    dump(viewModel.package)
                 })
                 .onChange(of: isExpendad) { newValue in
                     withAnimation {
