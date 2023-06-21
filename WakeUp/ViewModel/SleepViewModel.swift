@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class SleepViewModel: ObservableObject {
     @Published var isHaveAlarm: Bool = false
@@ -14,6 +15,8 @@ class SleepViewModel: ObservableObject {
     @Published var nearestActiveAlarm: AlarmModel?
     @Published var alarmTimeString: String = ""
     @Published var currentTime: String = ""
+    @Published var wakeLock: Bool = false
+
     private var timer: Timer?
     private var timer2: Timer?
     private var musicsData: [MusicModel] = []
@@ -21,6 +24,9 @@ class SleepViewModel: ObservableObject {
     init() {
         updateCurrentTime()
         AlarmService.shared.checkNearestActiveAlarm()
+        if UIDevice.current.batteryState != .charging{
+            AlertService.shared.showString(title: "", message: "Please connect your device to the charger to use this feature.")
+        }
         if let alarm = AlarmService.shared.nearestActiveAlarm {
             alarmTimeString = String(format: "%02d:%02d", alarm.hour, alarm.minute)
             nearestActiveAlarm = alarm
@@ -31,10 +37,10 @@ class SleepViewModel: ObservableObject {
         }
         FireBaseService.shared.fetchMusics { Result in
             switch Result {
-            case .success(let musics):
+            case let .success(musics):
                 self.musicsData = musics
                 self.getMusics(category: .recommended)
-            case .failure(let error):
+            case let .failure(error):
                 AlertService.shared.show(error: error)
             }
         }
@@ -43,9 +49,9 @@ class SleepViewModel: ObservableObject {
             self.checkAlarm()
         }
     }
-    
-    public func getMusics(category: MusicCategory){
-        self.musics = musicsData.filter({ $0.category == category })
+
+    public func getMusics(category: MusicCategory) {
+        musics = musicsData.filter({ $0.category == category })
     }
 
     private func updateCurrentTime() {
@@ -65,7 +71,7 @@ class SleepViewModel: ObservableObject {
             let alarmTime = DateComponents(hour: Int(alarm.hour), minute: Int(alarm.minute))
             if currentTime == alarmTime && alarm.isTriggered == false {
                 // Check if user is awake
-                AlarmService.shared.checkUserAwake { (isAwake) in
+                AlarmService.shared.checkUserAwake { isAwake in
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                         if isAwake {
                             print("User awake")
@@ -85,7 +91,6 @@ class SleepViewModel: ObservableObject {
                         }
                     }
                 }
-
             }
         } else {
             // If there's no nearest active alarm, try to get a new one
@@ -96,5 +101,4 @@ class SleepViewModel: ObservableObject {
             }
         }
     }
-
 }

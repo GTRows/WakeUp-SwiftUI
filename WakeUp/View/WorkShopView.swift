@@ -54,15 +54,6 @@ struct WorkShopView: View {
                             if viewModel.selectedTab == .myPackages {
                                 SwipeView {
                                     PackageCellView(package: package)
-                                } leadingActions: { context in
-                                    SwipeAction(systemImage: "square.and.arrow.up",
-                                                backgroundColor: .purple) {
-                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                            context.state.wrappedValue = .closed
-                                        }
-                                    }.onChange(of: wrappedVal) { _ in
-                                        context.state.wrappedValue = .closed
-                                    }
                                 } trailingActions: { context in
                                     SwipeAction(systemImage: "trash", action: {
                                         viewModel.deletePackage(package: package)

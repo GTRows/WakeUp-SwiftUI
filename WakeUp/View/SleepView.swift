@@ -5,8 +5,8 @@
 //  Created by Fatih Acıroğlu on 4.06.2023.
 //
 
-import SwiftUI
 import Shimmer
+import SwiftUI
 
 struct SleepView: View {
     @ObservedObject private var viewModel = SleepViewModel()
@@ -19,6 +19,12 @@ struct SleepView: View {
                 .font(.system(size: 50))
                 .fontWeight(.bold)
                 .padding(.top, 100)
+                .onAppear {
+                    UIDevice.current.isBatteryMonitoringEnabled = true
+                }
+                .onDisappear {
+                    UIDevice.current.isBatteryMonitoringEnabled = false
+                }
 
             ZStack {
                 RoundedRectangle(cornerRadius: 25)
@@ -69,17 +75,17 @@ struct SleepView: View {
 
             ScrollView(.horizontal) {
                 HStack {
-                    if viewModel.musics.isEmpty{
+                    if viewModel.musics.isEmpty {
                         Text("No music found")
                             .frame(width: 350, height: 200)
-                            .padding(.top,15)
+                            .padding(.top, 15)
                             .shimmering()
-                        
-                    } else{
+
+                    } else {
                         ForEach(viewModel.musics, id: \.id) { item in
                             WebView(videoID: item.key)
                                 .frame(width: 300, height: 200)
-                                .padding(.top,15)
+                                .padding(.top, 15)
                                 .padding(.horizontal, 10)
                         }
                     }
@@ -92,6 +98,15 @@ struct SleepView: View {
             Spacer()
         }.onAppear {
             viewModel.checkAlarm()
+        }.onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
+            if self.viewModel.wakeLock {
+                UIApplication.shared.isIdleTimerDisabled = true
+            }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
+            if !self.viewModel.wakeLock {
+                UIApplication.shared.isIdleTimerDisabled = false
+            }
         }
     }
 }
