@@ -64,7 +64,7 @@ struct ProfileView: View {
                     RoundedRectangle(cornerRadius: 10)
                         .foregroundColor(.gray)
                     HStack {
-                        Image(systemName: "gear")
+                        Image(systemName: "paperplane")
                         Spacer()
                         Text("Empty")
                         Spacer()
@@ -80,9 +80,9 @@ struct ProfileView: View {
                     RoundedRectangle(cornerRadius: 10)
                         .foregroundColor(.gray)
                     HStack {
-                        Image(systemName: "gear")
+                        Image(systemName: "folder")
                         Spacer()
-                        Text("Profile Settings")
+                        Text("Empty")
                         Spacer()
                         Image(systemName: "chevron.right")
                     }

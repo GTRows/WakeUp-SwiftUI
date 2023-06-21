@@ -22,7 +22,7 @@ struct AritclesCellView: View {
     var body: some View {
         ZStack {
             VStack(alignment: .leading) {
-                Image(uiImage: loader.image ?? UIImage(named: "Article1")!)
+                Image(uiImage: loader.image ?? UIImage(named: "Article0")!)
                     .resizable()
                     .scaledToFill()
                     .frame(width: UIScreen.main.bounds.width - 60, height: 150)

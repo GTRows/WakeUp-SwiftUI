@@ -24,10 +24,8 @@ class SleepViewModel: ObservableObject {
     init() {
         updateCurrentTime()
         AlarmService.shared.checkNearestActiveAlarm()
-        if UIDevice.current.batteryState != .charging{
-            AlertService.shared.showString(title: "", message: "Please connect your device to the charger to use this feature.")
-        }
         if let alarm = AlarmService.shared.nearestActiveAlarm {
+//            AlertService.shared.showString(title: "", message: "Please connect your device to the charger to use this feature.")
             alarmTimeString = String(format: "%02d:%02d", alarm.hour, alarm.minute)
             nearestActiveAlarm = alarm
             isHaveAlarm = true
