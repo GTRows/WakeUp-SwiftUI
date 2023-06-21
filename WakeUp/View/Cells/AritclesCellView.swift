@@ -79,6 +79,6 @@ struct SafariView: UIViewControllerRepresentable {
 
 struct AritclesCellView_Previews: PreviewProvider {
     static var previews: some View {
-        AritclesCellView(article: Constants.tempArticles[0])
+        AritclesCellView(article: ArticlesModel(from: [:]))
     }
 }

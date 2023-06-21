@@ -35,6 +35,7 @@
 		6280D77A2A09CAC700424191 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 6280D7792A09CAC700424191 /* FirebaseFunctions */; };
 		6280D77C2A09CAC700424191 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 6280D77B2A09CAC700424191 /* FirebaseStorage */; };
 		6280D7802A09CD5500424191 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6280D77F2A09CD5500424191 /* AuthViewModel.swift */; };
+		62819B8A2A424F7900A70792 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62819B892A424F7900A70792 /* WebView.swift */; };
 		629AD9912A33F2C10047CEFA /* AlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AD9902A33F2C10047CEFA /* AlertService.swift */; };
 		629AD9952A34A4060047CEFA /* CreatePackageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AD9942A34A4060047CEFA /* CreatePackageView.swift */; };
 		629AD9972A34A57A0047CEFA /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AD9962A34A57A0047CEFA /* ImagePicker.swift */; };
@@ -64,7 +65,6 @@
 		62B7CC1B2A2C11880086F476 /* SleepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B7CC1A2A2C11880086F476 /* SleepView.swift */; };
 		62B7CC1D2A2C12150086F476 /* AlarmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B7CC1C2A2C12150086F476 /* AlarmService.swift */; };
 		62B7CC1F2A2C14880086F476 /* DataBaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B7CC1E2A2C14880086F476 /* DataBaseService.swift */; };
-		62B7CC222A2C20830086F476 /* MusicCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B7CC212A2C20830086F476 /* MusicCellView.swift */; };
 		62B7CC242A2C24930086F476 /* MusicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B7CC232A2C24930086F476 /* MusicModel.swift */; };
 		62B7CC262A2D1F760086F476 /* StringExtenions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B7CC252A2D1F760086F476 /* StringExtenions.swift */; };
 		62B7CC292A2D1F9F0086F476 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B7CC282A2D1F9F0086F476 /* LoginView.swift */; };
@@ -106,6 +106,7 @@
 		627BD8C62A3A23F700FA0418 /* AlarmMusicSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmMusicSelectionView.swift; sourceTree = "<group>"; };
 		6280D7702A09C9D500424191 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6280D77F2A09CD5500424191 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		62819B892A424F7900A70792 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		629AD9902A33F2C10047CEFA /* AlertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertService.swift; sourceTree = "<group>"; };
 		629AD9942A34A4060047CEFA /* CreatePackageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePackageView.swift; sourceTree = "<group>"; };
 		629AD9962A34A57A0047CEFA /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -134,7 +135,6 @@
 		62B7CC1A2A2C11880086F476 /* SleepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepView.swift; sourceTree = "<group>"; };
 		62B7CC1C2A2C12150086F476 /* AlarmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmService.swift; sourceTree = "<group>"; };
 		62B7CC1E2A2C14880086F476 /* DataBaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseService.swift; sourceTree = "<group>"; };
-		62B7CC212A2C20830086F476 /* MusicCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCellView.swift; sourceTree = "<group>"; };
 		62B7CC232A2C24930086F476 /* MusicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicModel.swift; sourceTree = "<group>"; };
 		62B7CC252A2D1F760086F476 /* StringExtenions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtenions.swift; sourceTree = "<group>"; };
 		62B7CC282A2D1F9F0086F476 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -258,9 +258,9 @@
 			isa = PBXGroup;
 			children = (
 				629DDE2829E5796F00186056 /* AlarmCellView.swift */,
-				62B7CC212A2C20830086F476 /* MusicCellView.swift */,
 				62A0E2E62A2EC45E00891999 /* AritclesCellView.swift */,
 				629AD9A32A387A3E0047CEFA /* PackageCellView.swift */,
+				62819B892A424F7900A70792 /* WebView.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -465,6 +465,7 @@
 				62B7CC362A2D2A490086F476 /* SleepViewModel.swift in Sources */,
 				625448252A13052E008A36C6 /* AlarmSettingsViewModel.swift in Sources */,
 				62F7A5A829E386910005E833 /* WakeUp.xcdatamodeld in Sources */,
+				62819B8A2A424F7900A70792 /* WebView.swift in Sources */,
 				629AD9992A34ABD70047CEFA /* CreatePackageViewModel.swift in Sources */,
 				62F7A5B229E387DF0005E833 /* HomeView.swift in Sources */,
 				629DDDF829E4DF0D00186056 /* AlarmListView.swift in Sources */,
@@ -502,7 +503,6 @@
 				6262222C29E58DC500915E6F /* MapViewModel.swift in Sources */,
 				62519EB82A335FA200F14073 /* WorkShopView.swift in Sources */,
 				629AD9A42A387A3E0047CEFA /* PackageCellView.swift in Sources */,
-				62B7CC222A2C20830086F476 /* MusicCellView.swift in Sources */,
 				62519EC22A337F7D00F14073 /* WorkShopViewModel.swift in Sources */,
 				629DDE1C29E4E15C00186056 /* AudioViewModel.swift in Sources */,
 				629AD99E2A34F7250047CEFA /* ProfileSettingsViewModel.swift in Sources */,

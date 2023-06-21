@@ -181,7 +181,7 @@ class FireBaseService {
             completion(error)
         }
     }
-    
+
     func sharePackage(_ package: PackageModel, withEmail email: String, completion: @escaping (Error?) -> Void) {
         let packageData: [String: Any] = [
             "sender": getUser().email,
@@ -193,7 +193,6 @@ class FireBaseService {
             completion(error)
         }
     }
-
 
     func fetchSharedAlarms(forEmail email: String, completion: @escaping ([AlarmModel]?, Error?) -> Void) {
         db.collection("sharedAlarms").whereField("recipient", isEqualTo: email)
@@ -253,6 +252,60 @@ class FireBaseService {
                 completion(.failure(error))
             } else {
                 completion(.success(()))
+            }
+        }
+    }
+
+    // MARK: - Articles Operations
+
+    func fetchArticles(completion: @escaping (Result<[ArticlesModel], Error>) -> Void) {
+        db.collection("Articles").getDocuments { querySnapshot, error in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                var articles = [ArticlesModel]()
+                for document in querySnapshot!.documents {
+                    let article = ArticlesModel(from: document.data())
+                    articles.append(article)
+                }
+                completion(.success(articles))
+            }
+        }
+    }
+
+    // MARK: - Musics
+
+    func uploadMusics(musics: [MusicModel]) {
+        musics.forEach { music in
+            let docRef = db.collection("Musics").document(music.id.uuidString)
+
+            docRef.setData(music.toDict()) { error in
+                if let error = error {
+                    print("Error writing document: \(error)")
+                } else {
+                    print("Document successfully written!")
+                }
+            }
+        }
+    }
+
+    func fetchMusics(completion: @escaping (Result<[MusicModel], Error>) -> Void) {
+        db.collection("Musics").getDocuments { querySnapshot, error in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                var musics = [MusicModel]()
+
+                for document in querySnapshot!.documents {
+                    let id = UUID(uuidString: document.data()["id"] as? String ?? "") ?? UUID()
+                    let name = document.data()["name"] as? String ?? ""
+                    let key = document.data()["key"] as? String ?? ""
+                    let category = MusicCategory(rawValue: document.data()["category"] as? String ?? "") ?? .recommended
+
+                    let music = MusicModel(id: id, name: name, key: key, category: category)
+                    musics.append(music)
+                }
+                completion(.success(musics))
             }
         }
     }

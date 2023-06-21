@@ -9,12 +9,13 @@ import SwiftUI
 import SwipeActions
 
 struct HomeView: View {
+    @StateObject var alertService = AlertService.shared
     @ObservedObject private var viewModel = HomeViewModel()
     @State private var wrappedVal = 0
-
     let cellWidth: CGFloat = UIScreen.main.bounds.width - 40
     let cellHeight: CGFloat = 100
 
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -26,10 +27,9 @@ struct HomeView: View {
                         .clipShape(Circle())
                         .frame(width: 50, height: 50)
                         .padding(.leading)
-                        .onAppear(){
+                        .onAppear {
                             viewModel.loadAvatar()
                         }
-                        
 
                     VStack {
                         Text(viewModel.user.name)
@@ -117,6 +117,9 @@ struct HomeView: View {
                     }
                     Spacer()
                 }
+            }
+            .alert(isPresented: $alertService.isPresenting) {
+                alertService.alert
             }
         }
     }

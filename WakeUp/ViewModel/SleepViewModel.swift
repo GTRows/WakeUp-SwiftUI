@@ -10,12 +10,13 @@ import Foundation
 class SleepViewModel: ObservableObject {
     @Published var isHaveAlarm: Bool = false
     @Published var selectedCategory: Constants.MusicCategory? = nil
-    @Published var musics: [MusicModel] = Constants.tempMusics
+    @Published var musics: [MusicModel] = []
     @Published var nearestActiveAlarm: AlarmModel?
     @Published var alarmTimeString: String = ""
     @Published var currentTime: String = ""
     private var timer: Timer?
     private var timer2: Timer?
+    private var musicsData: [MusicModel] = []
 
     init() {
         updateCurrentTime()
@@ -28,10 +29,23 @@ class SleepViewModel: ObservableObject {
             alarmTimeString = "NoneX"
             isHaveAlarm = false
         }
+        FireBaseService.shared.fetchMusics { Result in
+            switch Result {
+            case .success(let musics):
+                self.musicsData = musics
+                self.getMusics(category: .recommended)
+            case .failure(let error):
+                AlertService.shared.show(error: error)
+            }
+        }
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
             self.updateCurrentTime()
             self.checkAlarm()
         }
+    }
+    
+    public func getMusics(category: MusicCategory){
+        self.musics = musicsData.filter({ $0.category == category })
     }
 
     private func updateCurrentTime() {

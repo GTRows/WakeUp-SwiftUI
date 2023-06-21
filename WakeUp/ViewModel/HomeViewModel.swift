@@ -23,14 +23,13 @@ class HomeViewModel: ObservableObject {
     var nearestActiveAlarm: AlarmModel = AlarmModel()
 
     init() {
-        
         AlarmService.shared.checkNearestActiveAlarm()
         user = FireBaseService.shared.getUser()
         greetingMessage = Constants().getRandomGreeting()
         quote = Constants.tempQuote
         userName = user.name
         userAvatar = user.avatar
-        self.loadAvatar()
+        loadAvatar()
         if let alarm = AlarmService.shared.nearestActiveAlarm {
             nearestActiveAlarm = alarm
             isHaveAlarm = true
@@ -38,8 +37,8 @@ class HomeViewModel: ObservableObject {
             isHaveAlarm = false
         }
 
-        articles = Constants.tempArticles
-        
+        fetchArticles()
+
         fetchQuote { quote, _ in
             if let quote = quote {
                 DispatchQueue.main.async {
@@ -88,5 +87,18 @@ class HomeViewModel: ObservableObject {
         }
 
         task.resume()
+    }
+
+    func fetchArticles() {
+        FireBaseService.shared.fetchArticles { Result in
+            switch Result {
+            case let .success(articles):
+                DispatchQueue.main.async {
+                    self.articles = articles
+                }
+            case let .failure(error):
+                AlertService.shared.show(error: error)
+            }
+        }
     }
 }

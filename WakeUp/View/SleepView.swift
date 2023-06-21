@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Shimmer
 
 struct SleepView: View {
     @ObservedObject private var viewModel = SleepViewModel()
@@ -29,28 +30,26 @@ struct SleepView: View {
                         .font(.system(size: 20))
                         .foregroundColor(.black)
                     Spacer()
-                Text(viewModel.alarmTimeString)
-                    .font(.system(size: 20))
-                    .fontWeight(.bold)
-                    .foregroundColor(.black)
-                    
+                    Text(viewModel.alarmTimeString)
+                        .font(.system(size: 20))
+                        .fontWeight(.bold)
+                        .foregroundColor(.black)
                 }
                 .frame(width: 100, height: 50)
             }
             // Music Category horizontal scroll
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 20) {
-                    ForEach(Constants.MusicCategory.allCases, id: \.self) { item in
+                    ForEach(MusicCategory.allCases, id: \.self) { item in
                         ZStack(alignment: .bottom) {
                             // Button category
                             Button(action: {
                                 selectedCategory = item.rawValue
+                                viewModel.getMusics(category: item)
                             }) {
-                                ZStack {
-                                    Text(item.rawValue)
-                                        .font(.system(size: 20))
-                                        .foregroundColor(.white)
-                                }
+                                Text(item.rawValue)
+                                    .font(.system(size: 20))
+                                    .foregroundColor(.white)
                             }
                             GeometryReader { geometry in
                                 Capsule()
@@ -70,17 +69,28 @@ struct SleepView: View {
 
             ScrollView(.horizontal) {
                 HStack {
-                    ForEach(Constants.tempMusics, id: \.id) { item in
-                        MusicCellView(music: item)
-                            .frame(maxWidth: 400)
+                    if viewModel.musics.isEmpty{
+                        Text("No music found")
+                            .frame(width: 350, height: 200)
+                            .padding(.top,15)
+                            .shimmering()
+                        
+                    } else{
+                        ForEach(viewModel.musics, id: \.id) { item in
+                            WebView(videoID: item.key)
+                                .frame(width: 350, height: 200)
+                                .padding(.top,15)
+                                .padding(.horizontal, 10)
+                        }
                     }
                 }
             }.padding(.top, 20)
                 .padding(.bottom)
+
             Text(AlarmService.shared.sleepViewModelSensorText)
                 .padding()
             Spacer()
-        }.onAppear(){
+        }.onAppear {
             viewModel.checkAlarm()
         }
     }

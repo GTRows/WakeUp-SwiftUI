@@ -52,35 +52,12 @@ struct Constants {
 
     // Temp MusicModels
     static let tempMusics = [
-        MusicModel(id: UUID(), name: "Solo", category: .recommended, duration: 180, coverName: "SoloCover", isPlaying: false, isLooping: false),
-        MusicModel(id: UUID(), name: "Piece of Mind", category: .recommended, duration: 180, coverName: "PieceOfMindCover", isPlaying: false, isLooping: false),
-        MusicModel(id: UUID(), name: "Powerslave", category: .recommended, duration: 180, coverName: "PowerslaveCover", isPlaying: false, isLooping: false),
-        MusicModel(id: UUID(), name: "The Number of The Beast", category: .recommended, duration: 180, coverName: "TheNumberOfTheBeastCover", isPlaying: false, isLooping: false),
-        MusicModel(id: UUID(), name: "Mutter", category: .recommended, duration: 180, coverName: "MutterCover", isPlaying: false, isLooping: false),
-        MusicModel(id: UUID(), name: "Rammstein", category: .recommended, duration: 180, coverName: "RammsteinCover", isPlaying: false, isLooping: false),
-    ]
-
-    static let tempArticles = [
-        ArticlesModel(id: UUID(),
-                      title: "Uyku ve Sağlık",
-                      description: "Uyku, genel sağlık ve yaşam kalitesi üzerinde büyük bir etkiye sahiptir.",
-                      image: "https://sehercakmak.com/images/blog/tt_637995245828057458_b.webp",
-                      url: "https://sehercakmak.com/blog/uyku-ve-ruh-sagligi"),
-        ArticlesModel(id: UUID(),
-                      title: "Uyku Hijyen",
-                      description: "Etkili uyku hijyen pratikleri, daha iyi bir gece uykusu almanıza yardımcı olabilir.",
-                      image: "https://npistanbul.com/panel/images/saglik_islemleri/1/tr/1676895230.jpg",
-                      url: "https://npistanbul.com/uyku-hijyeni-nedir"),
-        ArticlesModel(id: UUID(),
-                      title: "Uyandırma Rutinleri",
-                      description: "Etkili uyandırma rutinleri, gün boyunca enerjik ve odaklanmış hissetmenizi sağlar.",
-                      image: "https://www.innerjoy.app/wp-content/uploads/2022/05/Ordinary-day-bro-1536x1536.png",
-                      url: "https://www.innerjoy.app/gun-icerisinde-daha-verimli-hissetmenin-bir-yolu-sabah-rutini/"),
-        ArticlesModel(id: UUID(),
-                      title: "Uyku ve Beslenme",
-                      description: "Beslenme, uyku kalitesini ve süresini önemli ölçüde etkileyebilir.",
-                      image: "https://www.ucarecdn.com/411621cf-6bdc-40a1-ac3a-224a825b0d7f/",
-                      url: "https://www.doktortakvimi.com/blog/uyku-kalitesi-ve-beslenme2")
+        MusicModel(id: UUID(), name: "Solo", key: "123", category: .recommended),
+        MusicModel(id: UUID(), name: "Piece of Mind", key: "123", category: .recommended),
+        MusicModel(id: UUID(), name: "Powerslave", key: "123", category: .recommended),
+        MusicModel(id: UUID(), name: "The Number of The Beast", key: "123", category: .recommended),
+        MusicModel(id: UUID(), name: "Mutter", key: "123", category: .recommended),
+        MusicModel(id: UUID(), name: "Rammstein", key: "123", category: .recommended),
     ]
 
     func getRandomGreeting() -> String {

@@ -44,26 +44,39 @@ final class DatabaseService {
     
     
     func addAlarm(alarm: AlarmModel) {
-        let newAlarm = Alarm(context: context)
-        newAlarm.id = alarm.id
-        newAlarm.name = alarm.name
-        newAlarm.active = alarm.active.rawValue
-        newAlarm.vibrate = alarm.vibrate.rawValue
-        newAlarm.tone = alarm.tone
-        newAlarm.hour = Int16(alarm.hour)
-        newAlarm.minute = Int16(alarm.minute)
-        newAlarm.volume = Int16(alarm.volume)
-        newAlarm.tasks = NSArray(array: alarm.tasks)
-        newAlarm.sensors = NSArray(array: alarm.sensors)
-        newAlarm.recurringDays = NSArray(array: alarm.recurringDays)
-        
+        let fetchRequest: NSFetchRequest<Alarm> = Alarm.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", alarm.id as CVarArg)
+
         do {
+            let fetchedAlarms = try context.fetch(fetchRequest)
+            let newAlarm = Alarm(context: context)
+
+            // If an alarm with the same ID already exists, generate a new ID
+            if fetchedAlarms.isEmpty {
+                newAlarm.id = alarm.id
+            } else {
+                newAlarm.id = UUID()
+            }
+
+            newAlarm.name = alarm.name
+            newAlarm.active = alarm.active.rawValue
+            newAlarm.vibrate = alarm.vibrate.rawValue
+            newAlarm.tone = alarm.tone
+            newAlarm.hour = Int16(alarm.hour)
+            newAlarm.minute = Int16(alarm.minute)
+            newAlarm.volume = Int16(alarm.volume)
+            newAlarm.tasks = NSArray(array: alarm.tasks)
+            newAlarm.sensors = NSArray(array: alarm.sensors)
+            newAlarm.recurringDays = NSArray(array: alarm.recurringDays)
+
             try context.save()
             print("Saved new alarm: \(alarm.name)")
         } catch {
-            print("Failed to save new alarm: \(error)")
+            AlertService.shared.showString(title: "Error", message: "Failed to save alarm: \(error)")
+        
         }
     }
+
     
     func editAlarm(alarm: AlarmModel) {
         let fetchRequest: NSFetchRequest<Alarm> = Alarm.fetchRequest()
