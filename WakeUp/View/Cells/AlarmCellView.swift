@@ -198,6 +198,6 @@ struct AlarmCellView_Previews: PreviewProvider {
     static var previews: some View {
 //        AlarmCellView(alarm: AlarmModel(), mod: AlarmCellViewMod.notification) // notification
 //        AlarmCellView(alarm: AlarmModel(), mod: AlarmCellViewMod.edit) // notification
-        AlarmCellView(alarm: AlarmModel(), mod: AlarmCellViewMod.addPackage, isActiveToggle: true) // notification
+        AlarmCellView(alarm: AlarmModel(), mod: AlarmCellViewMod.edit, isActiveToggle: true) // notification
     }
 }

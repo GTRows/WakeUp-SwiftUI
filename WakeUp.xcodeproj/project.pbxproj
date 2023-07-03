@@ -13,7 +13,6 @@
 		62519EBD2A3370D100F14073 /* FireBaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62519EBC2A3370D100F14073 /* FireBaseService.swift */; };
 		62519EC22A337F7D00F14073 /* WorkShopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62519EC12A337F7D00F14073 /* WorkShopViewModel.swift */; };
 		62519EC42A33812000F14073 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62519EC32A33812000F14073 /* NotificationView.swift */; };
-		625448252A13052E008A36C6 /* AlarmSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625448242A13052E008A36C6 /* AlarmSettingsViewModel.swift */; };
 		62545F312A0A55A200EF6B71 /* SwipeActions in Frameworks */ = {isa = PBXBuildFile; productRef = 62545F302A0A55A200EF6B71 /* SwipeActions */; };
 		6254C0B829E58A56002D774F /* NewMorningAlarm.caf in Resources */ = {isa = PBXBuildFile; fileRef = 6254C0B729E58A56002D774F /* NewMorningAlarm.caf */; };
 		6254C0BA29E58A5A002D774F /* TimeToWakeUp.caf in Resources */ = {isa = PBXBuildFile; fileRef = 6254C0B929E58A5A002D774F /* TimeToWakeUp.caf */; };
@@ -49,6 +48,7 @@
 		629AD9A02A3538F40047CEFA /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AD99F2A3538F40047CEFA /* ImageLoader.swift */; };
 		629AD9A22A353C7B0047CEFA /* ImageStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AD9A12A353C7B0047CEFA /* ImageStorageService.swift */; };
 		629AD9A42A387A3E0047CEFA /* PackageCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AD9A32A387A3E0047CEFA /* PackageCellView.swift */; };
+		629D64882A52CDD00064B489 /* AlarmSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629D64872A52CDD00064B489 /* AlarmSettingsViewModel.swift */; };
 		629DDDF629E4DEFE00186056 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629DDDF529E4DEFE00186056 /* ProfileView.swift */; };
 		629DDDF829E4DF0D00186056 /* AlarmListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629DDDF729E4DF0D00186056 /* AlarmListView.swift */; };
 		629DDDFA29E4DF5100186056 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629DDDF929E4DF5100186056 /* MapView.swift */; };
@@ -95,7 +95,6 @@
 		62519EBC2A3370D100F14073 /* FireBaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseService.swift; sourceTree = "<group>"; };
 		62519EC12A337F7D00F14073 /* WorkShopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkShopViewModel.swift; sourceTree = "<group>"; };
 		62519EC32A33812000F14073 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
-		625448242A13052E008A36C6 /* AlarmSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlarmSettingsViewModel.swift; path = ../../../AlarmSettingsViewModel.swift; sourceTree = "<group>"; };
 		6254C0B729E58A56002D774F /* NewMorningAlarm.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NewMorningAlarm.caf; sourceTree = "<group>"; };
 		6254C0B929E58A5A002D774F /* TimeToWakeUp.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TimeToWakeUp.caf; sourceTree = "<group>"; };
 		6254C0BE29E58C06002D774F /* AlarmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmModel.swift; sourceTree = "<group>"; };
@@ -124,6 +123,7 @@
 		629AD99F2A3538F40047CEFA /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		629AD9A12A353C7B0047CEFA /* ImageStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStorageService.swift; sourceTree = "<group>"; };
 		629AD9A32A387A3E0047CEFA /* PackageCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageCellView.swift; sourceTree = "<group>"; };
+		629D64872A52CDD00064B489 /* AlarmSettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmSettingsViewModel.swift; sourceTree = "<group>"; };
 		629DDDF529E4DEFE00186056 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		629DDDF729E4DF0D00186056 /* AlarmListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmListView.swift; sourceTree = "<group>"; };
 		629DDDF929E4DF5100186056 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -369,8 +369,8 @@
 				629DDE1B29E4E15C00186056 /* AudioViewModel.swift */,
 				6262222B29E58DC500915E6F /* MapViewModel.swift */,
 				6280D77F2A09CD5500424191 /* AuthViewModel.swift */,
-				625448242A13052E008A36C6 /* AlarmSettingsViewModel.swift */,
 				6227599B2A131D7F0030F004 /* AlarmListViewModel.swift */,
+				629D64872A52CDD00064B489 /* AlarmSettingsViewModel.swift */,
 				62B7CC352A2D2A490086F476 /* SleepViewModel.swift */,
 				62519EC12A337F7D00F14073 /* WorkShopViewModel.swift */,
 				62EF9AD02A3389900057C1CE /* NotificationViewModel.swift */,
@@ -480,7 +480,6 @@
 				629DDE2029E4E17800186056 /* MPVolumeViewExtension.swift in Sources */,
 				62B7CC242A2C24930086F476 /* MusicModel.swift in Sources */,
 				62B7CC362A2D2A490086F476 /* SleepViewModel.swift in Sources */,
-				625448252A13052E008A36C6 /* AlarmSettingsViewModel.swift in Sources */,
 				62F7A5A829E386910005E833 /* WakeUp.xcdatamodeld in Sources */,
 				62819B8A2A424F7900A70792 /* WebView.swift in Sources */,
 				629AD9992A34ABD70047CEFA /* CreatePackageViewModel.swift in Sources */,
@@ -505,6 +504,7 @@
 				62E6D4482A3BDD6400BA58C7 /* ShareAbleCellProtocol.swift in Sources */,
 				629AD99C2A34F2B70047CEFA /* UserStorageService.swift in Sources */,
 				62B7CC302A2D20E20086F476 /* InitialView.swift in Sources */,
+				629D64882A52CDD00064B489 /* AlarmSettingsViewModel.swift in Sources */,
 				62519EBD2A3370D100F14073 /* FireBaseService.swift in Sources */,
 				62AA2E442A3887D30026E1A1 /* PackageViewModel.swift in Sources */,
 				62B7CC1B2A2C11880086F476 /* SleepView.swift in Sources */,
